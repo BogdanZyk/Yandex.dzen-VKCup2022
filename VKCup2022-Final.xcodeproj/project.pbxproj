@@ -11,8 +11,15 @@
 		5A0C8A0529859DB2002AF471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A0429859DB2002AF471 /* ContentView.swift */; };
 		5A0C8A0729859DB4002AF471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C8A0629859DB4002AF471 /* Assets.xcassets */; };
 		5A0C8A0A29859DB4002AF471 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C8A0929859DB4002AF471 /* Preview Assets.xcassets */; };
-		5A0C8A0C29859DB4002AF471 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A0B29859DB4002AF471 /* Persistence.swift */; };
-		5A0C8A0F29859DB4002AF471 /* VKCup2022_Final.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A0D29859DB4002AF471 /* VKCup2022_Final.xcdatamodeld */; };
+		5A0C8A1A29859EBF002AF471 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A1929859EBF002AF471 /* View.swift */; };
+		5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A1B29859ED8002AF471 /* Color.swift */; };
+		5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2229859FEF002AF471 /* AudioBufferService.swift */; };
+		5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A242985A0F4002AF471 /* Audio.swift */; };
+		5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A262985A171002AF471 /* AvAudioSessionManager.swift */; };
+		5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A282985A265002AF471 /* AudioRecorderManager.swift */; };
+		5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */; };
+		5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */; };
+		5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +28,15 @@
 		5A0C8A0429859DB2002AF471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A0C8A0629859DB4002AF471 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A0C8A0929859DB4002AF471 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5A0C8A0B29859DB4002AF471 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		5A0C8A0E29859DB4002AF471 /* VKCup2022_Final.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VKCup2022_Final.xcdatamodel; sourceTree = "<group>"; };
+		5A0C8A1929859EBF002AF471 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		5A0C8A1B29859ED8002AF471 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5A0C8A2229859FEF002AF471 /* AudioBufferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBufferService.swift; sourceTree = "<group>"; };
+		5A0C8A242985A0F4002AF471 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		5A0C8A262985A171002AF471 /* AvAudioSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvAudioSessionManager.swift; sourceTree = "<group>"; };
+		5A0C8A282985A265002AF471 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
+		5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewComponent.swift; sourceTree = "<group>"; };
+		5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManger.swift; sourceTree = "<group>"; };
+		5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				5A0C8A0229859DB2002AF471 /* VKCup2022_FinalApp.swift */,
-				5A0C8A0429859DB2002AF471 /* ContentView.swift */,
+				5A0C8A1E29859EF7002AF471 /* Services */,
+				5A0C8A1D29859EEA002AF471 /* Views */,
+				5A0C8A1829859EA2002AF471 /* ViewComponents */,
+				5A0C8A1729859E8F002AF471 /* ViewModels */,
+				5A0C8A1629859E72002AF471 /* Models */,
+				5A0C8A1529859E6B002AF471 /* Utils */,
 				5A0C8A0629859DB4002AF471 /* Assets.xcassets */,
-				5A0C8A0B29859DB4002AF471 /* Persistence.swift */,
-				5A0C8A0D29859DB4002AF471 /* VKCup2022_Final.xcdatamodeld */,
 				5A0C8A0829859DB4002AF471 /* Preview Content */,
 			);
 			path = "VKCup2022-Final";
@@ -71,6 +88,66 @@
 				5A0C8A0929859DB4002AF471 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A0C8A1529859E6B002AF471 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A1929859EBF002AF471 /* View.swift */,
+				5A0C8A1B29859ED8002AF471 /* Color.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5A0C8A1629859E72002AF471 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A242985A0F4002AF471 /* Audio.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5A0C8A1729859E8F002AF471 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5A0C8A1829859EA2002AF471 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		5A0C8A1D29859EEA002AF471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A0429859DB2002AF471 /* ContentView.swift */,
+				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5A0C8A1E29859EF7002AF471 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A2029859FDA002AF471 /* Audio */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5A0C8A2029859FDA002AF471 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A2229859FEF002AF471 /* AudioBufferService.swift */,
+				5A0C8A262985A171002AF471 /* AvAudioSessionManager.swift */,
+				5A0C8A282985A265002AF471 /* AudioRecorderManager.swift */,
+				5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +220,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A0C8A0F29859DB4002AF471 /* VKCup2022_Final.xcdatamodeld in Sources */,
-				5A0C8A0C29859DB4002AF471 /* Persistence.swift in Sources */,
+				5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */,
+				5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */,
+				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
+				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
+				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
 				5A0C8A0529859DB2002AF471 /* ContentView.swift in Sources */,
+				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,
+				5A0C8A1A29859EBF002AF471 /* View.swift in Sources */,
+				5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */,
+				5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +362,13 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Нужно разрешение на использование микрофона для записи аудио";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,9 +376,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bogdanZyk.VKCup2022-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,11 +396,13 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Нужно разрешение на использование микрофона для записи аудио";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,9 +410,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bogdanZyk.VKCup2022-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -347,19 +441,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5A0C8A0D29859DB4002AF471 /* VKCup2022_Final.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5A0C8A0E29859DB4002AF471 /* VKCup2022_Final.xcdatamodel */,
-			);
-			currentVersion = 5A0C8A0E29859DB4002AF471 /* VKCup2022_Final.xcdatamodel */;
-			path = VKCup2022_Final.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5A0C89F729859DB2002AF471 /* Project object */;
 }
