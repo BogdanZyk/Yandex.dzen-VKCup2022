@@ -12,11 +12,8 @@ import Combine
 
 class AudioPlayerManger: ObservableObject {
     
-    private var sumplesTimer: Timer?
     
     @Published var currentTime: Double = .zero
-
-    var index = 0
     @Published var currentAudio: Audio?
     @Published var isPlaying: Bool = false
     private var player: AVPlayer!
@@ -30,6 +27,16 @@ class AudioPlayerManger: ObservableObject {
         removeTimeObserver()
     }
     
+    
+    var scrubState: PlayerScrubState = .reset {
+        didSet {
+            switch scrubState {
+            case .scrubEnded(let seekTime):
+                player.seek(to: CMTime(seconds: seekTime, preferredTimescale: 600))
+            default : break
+            }
+        }
+    }
 
     
     private func startTimeControlSubscriptions(){
@@ -53,9 +60,7 @@ class AudioPlayerManger: ObservableObject {
     private func setAudio(_ audio: Audio){
         guard currentAudio?.id != audio.id else {return}
         AVAudioSessionManager.share.configurePlaybackSession()
-        sumplesTimer?.invalidate()
         removeTimeObserver()
-        index = 0
         currentAudio = nil
         withAnimation {
             currentAudio = audio
@@ -68,41 +73,30 @@ class AudioPlayerManger: ObservableObject {
         player.playImmediately(atRate: currentRate)
     }
     
-    func startTimer() {
+  private func startTimer() {
         
-        guard let audio = currentAudio else {return}
-        let duration = audio.duration
-        let simlesCount = audio.audioSimples.count
-        let time_interval = duration / Double(simlesCount)
-        self.sumplesTimer = Timer.scheduledTimer(withTimeInterval: time_interval, repeats: true, block: { (timer) in
-                if self.index < simlesCount {
-                    withAnimation(Animation.linear) {
-                        self.currentAudio?.audioSimples[self.index].color = Color.white
-                    }
-                    self.index += 1
-                }
-            })
-            
         let interval = CMTimeMake(value: 1, timescale: 2)
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
             guard let self = self else { return }
             let time = time.seconds
-            self.currentAudio?.updateRemainingDuration(time)
-            if (self.currentAudio?.duration ?? 0) > time{
-                withAnimation {
-                    self.currentTime = time
-                }
+            
+            switch self.scrubState {
+            case .reset:
+                self.currentTime = time
+                self.currentAudio?.updateRemainingDuration(time)
+            case .scrubStarted:
+                break
+            case .scrubEnded(let seekTime):
+                self.scrubState = .reset
+                self.currentTime = seekTime
             }
         }
-        
     }
     
-    func playerDidFinishPlaying() {
+   private func playerDidFinishPlaying() {
         print("DidFinishPlaying")
         self.player.pause()
         self.player.seek(to: .zero)
-        self.sumplesTimer?.invalidate()
-        self.index = 0
         currentAudio?.resetRemainingDuration()
         currentAudio?.setDefaultColor()
         withAnimation {
@@ -137,7 +131,6 @@ class AudioPlayerManger: ObservableObject {
     
     private func pauseAudio() {
         player.pause()
-        sumplesTimer?.invalidate()
     }
 
     private func removeTimeObserver(){
@@ -158,4 +151,11 @@ class AudioPlayerManger: ObservableObject {
         }
     }
 
+}
+
+
+enum PlayerScrubState{
+    case reset
+    case scrubStarted
+    case scrubEnded(Double)
 }

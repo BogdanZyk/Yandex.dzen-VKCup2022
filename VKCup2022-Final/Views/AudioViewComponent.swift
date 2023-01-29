@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AudioViewComponent: View {
+    
     @StateObject var playerManager = AudioPlayerManger()
     
     @StateObject private var viewModel: AudioViewModel
@@ -37,38 +38,34 @@ struct AudioViewComponent: View {
         }
     }
     
-    
+    private var isSetCurrentAudio: Bool{
+        playerManager.currentAudio?.id == viewModel.audio?.id
+    }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            if let audio = viewModel.audio{
-                HStack(alignment: .center, spacing: 10) {
-                    
-                    Button {
-                        playerManager.audioAction(audio)
-                    } label: {
-                        Image(systemName: icon)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 5){
-                        HStack(alignment: .center, spacing: 2) {
-                            if let soundSamples {
-                                ForEach(soundSamples, id: \.self) { model in
-                                    barView(value: self.normalizeSoundLevel(level: model.magnitude), color: model.color)
-                                }
-                            }
+            VStack(alignment: .leading) {
+                if let audio = viewModel.audio, viewModel.state == .load{
+                    HStack(alignment: .center, spacing: 10) {
+                        Button {
+                            playerManager.audioAction(audio)
+                        } label: {
+                            Image(systemName: icon)
+                                .imageScale(.large)
                         }
+                        
+                        if let soundSamples{
+                            AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
+                        }
+                        Text(remainingDuration)
+                            .font(.caption2)
                     }
-                    
-                    Text(remainingDuration)
-                        .font(.caption2)
+                }else if viewModel.state == .loading{
+                    ProgressView()
+                }else{
+                    Text("Ошибка загрузки аудио")
                 }
             }
-        }
-        .foregroundColor(.white)
+            .foregroundColor(.white)
     }
 }
 
@@ -86,7 +83,7 @@ struct AudioViewComponent_Previews: PreviewProvider {
 extension AudioViewComponent{
     
     private var icon: String{
-        isPlayCurrentAudio ? "play.fill" : "play.circle.fill"
+        isPlayCurrentAudio ?  "pause.fill" : "play.fill"
     }
     
     private func barView(value: CGFloat, color: Color) -> some View {
@@ -94,15 +91,20 @@ extension AudioViewComponent{
             Rectangle()
                 .fill(color)
                 .cornerRadius(10)
-                .frame(width: 2, height: value <= 0 ? 3 : value)
+                .frame(width: 3, height: value <= 0 ? 3 : value)
         }
     }
     
     
-    private func normalizeSoundLevel(level: Float) -> CGFloat {
-        let level = max(0.2, CGFloat(level) + 50) / 2
-        
-        return CGFloat(level * (40/35))
+
+    
+    private func onEditingChanged(_ scrubStarted: Bool){
+        //guard isPlayCurrentAudio else {return}
+        if scrubStarted{
+            playerManager.scrubState = .scrubStarted
+        }else{
+            playerManager.scrubState = .scrubEnded(playerManager.currentTime)
+        }
     }
     
 }

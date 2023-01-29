@@ -20,6 +20,7 @@
 		5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */; };
 		5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */; };
 		5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */; };
+		5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewComponent.swift; sourceTree = "<group>"; };
 		5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManger.swift; sourceTree = "<group>"; };
 		5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSimplesSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		5A0C8A1829859EA2002AF471 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
+				5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */,
 				5A0C8A0529859DB2002AF471 /* ContentView.swift in Sources */,
 				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Богдан Зыков on 28.01.2023.
 //
 
-import Foundation
+import SwiftUI
 
 class AudioViewModel: ObservableObject{
     
@@ -13,7 +13,7 @@ class AudioViewModel: ObservableObject{
     
     @Published var audio: Audio?
     @Published var state: AudioState = .loading
-    @Published var errorMessge: String = ""
+
     
     init(_ url: String){
         crateAudioModel(for: url)
@@ -23,17 +23,17 @@ class AudioViewModel: ObservableObject{
     func crateAudioModel(for url: String){
         guard let url = URL(string: url) else {return}
         state = .loading
-        bufferService.buffer(url: url, samplesCount: 30) {[weak self] (duration, decibles) in
+        bufferService.buffer(url: url, samplesCount: Int(UIScreen.main.bounds.width * 0.5) / 4) {[weak self] (duration, decibles) in
             guard let self = self else {return}
             self.audio = .init(url: url, duration: duration.rounded(.up), decibles: decibles)
             self.state = .load
-        }onError: { [weak self] error in
-            self?.state = .error("Ошибка при загрузке аудио")
+        }onError: { [weak self] _ in
+            self?.state = .error
         }
     }
     
-    enum AudioState{
-        case load, error(String), loading
+    enum AudioState: Int{
+        case load, error, loading
     }
 }
 

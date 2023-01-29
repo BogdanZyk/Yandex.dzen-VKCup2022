@@ -25,7 +25,6 @@ struct Audio: Identifiable{
 }
 
 extension Audio{
-    
     struct AudioSimple: Hashable {
         var magnitude: Float
         var color: Color = .white.opacity(0.5)
@@ -34,7 +33,6 @@ extension Audio{
 
 
 extension Audio{
-    
     mutating func setDefaultColor(){
         self.audioSimples = self.audioSimples.map { tmp -> AudioSimple in
             var cur = tmp

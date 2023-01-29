@@ -24,8 +24,8 @@ class AudioRecorderManager : ObservableObject {
     @Published var timerCount : Timer?
     @Published var blinkingCount : Timer?
     @Published var remainingDuration: Double = 0
-    @Published var returnedAudio: Audio?
-   
+    
+    var returnedAudioUrlStr: String?
     
     init(){
         AVAudioSessionManager.share.configureRecordAudioSessionCategory()
@@ -37,6 +37,7 @@ class AudioRecorderManager : ObservableObject {
     
         let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let audioCachURL = path.appendingPathComponent("Voice-\(UUID().uuidString).m4a")
+        self.returnedAudioUrlStr = audioCachURL.absoluteString
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -64,7 +65,6 @@ class AudioRecorderManager : ObservableObject {
         audioRecorder.stop()
         timerCount!.invalidate()
         blinkingCount!.invalidate()
-        prepairAudio()
     }
     
     func cancel(){
@@ -72,33 +72,16 @@ class AudioRecorderManager : ObservableObject {
         audioRecorder.stop()
         timerCount!.invalidate()
         blinkingCount!.invalidate()
-        returnedAudio = nil
+        returnedAudioUrlStr = nil
         recordState = .empty
         remainingDuration = 0
     }
-    
-    func prepairAudio(){
-        print("DEBUG:", "prepairAudio")
-        let url = audioRecorder.url
-        print(remainingDuration)
-//        bufferService.buffer(url: url, samplesCount: 30) {[weak self] (duration, decibles) in
-//            guard let self = self else {return}
-//            self.returnedAudio  = .init(url: url, duration: duration, decibles: decibles)
-//                self.recordState = .recordered
-//                self.remainingDuration = 0
-//        }
-    }
 
-    func uploadAudio(completion: @escaping (Audio) -> Void){
-//        print("DEBUG:", "uploadAudio", returnedAudio?.duration)
-//         guard let returnedAudio = returnedAudio else {return}
-//         let url = returnedAudio.url
-//         bufferService.buffer(url: url, samplesCount: 30) {[weak self] decibles in
-//             guard let self = self else {return}
-//             let updloadedAudio: Audio = .init(url: <#T##URL#>, duration: <#T##Double#>, decibles: <#T##[Float]#>)
-//             completion(updloadedAudio)
-//             self.recordState = .empty
-//         }
+    func uploadAudio(completion: @escaping (String) -> Void){
+        print("DEBUG:", "uploadAudio")
+        if let urlStr = returnedAudioUrlStr{
+            completion(urlStr)
+        }
     }
     
     
@@ -125,11 +108,21 @@ extension TimeInterval {
                truncatingRemainder(dividingBy: 60),
                (self * 100).truncatingRemainder(dividingBy: 100).rounded(.down))
     }
-    var minuteSeconds: String{
-        String(format: "%02.0f:%02.0f",
-               (self / 60).truncatingRemainder(dividingBy: 60),
-               truncatingRemainder(dividingBy: 60))
+    
+    
+    var minuteSeconds: String {
+        guard self > 0 && self < Double.infinity else {
+            return "unknown"
+        }
+        let time = NSInteger(self)
+        
+        let seconds = time % 60
+        let minutes = (time / 60) % 60
+        
+        return String(format: "%0.2d:%0.2d", minutes, seconds)
+        
     }
 }
+
 
 
