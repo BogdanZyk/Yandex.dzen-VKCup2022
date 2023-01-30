@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var audioPlayer = AudioPlayerManger()
-    @Environment(\.safeAreaInsets) var safeAreaInsets
     @State private var currentTab: TabEnum = .home
     
     init(){
@@ -19,7 +18,7 @@ struct RootView: View {
     var body: some View {
         ZStack(alignment: .bottom){
             TabView(selection: $currentTab) {
-                ContentView()
+                HomeView()
                     .tag(TabEnum.home)
                 Text("reels")
                     .tag(TabEnum.reels)
@@ -33,7 +32,6 @@ struct RootView: View {
             
         }
         .environmentObject(audioPlayer)
-        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
@@ -47,13 +45,10 @@ struct RootView_Previews: PreviewProvider {
 extension RootView{
     private var tabBarView: some View{
         VStack(spacing: 0) {
-            if audioPlayer.isSetAudio{
+            if audioPlayer.isPinAudio{
                 AudioPinToolBarView(playerManager: audioPlayer)
-                    .animation(.easeInOut, value: audioPlayer.isSetAudio)
-                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
-            ZStack(alignment: .top){
-                Color.primaryBg
                 VStack(spacing: 0){
                     Rectangle()
                         .fill(Color.lightGray.opacity(0.3))
@@ -80,8 +75,7 @@ extension RootView{
                     .padding(.horizontal)
                     .padding(.top, 10)
                 }
-            }
-            .frame(height: 50 + safeAreaInsets.bottom)
+                .background(Color.primaryBg.ignoresSafeArea())
         }
     }
 }

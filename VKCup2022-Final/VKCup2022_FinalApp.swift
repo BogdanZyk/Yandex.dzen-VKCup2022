@@ -13,7 +13,7 @@ struct VKCup2022_FinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

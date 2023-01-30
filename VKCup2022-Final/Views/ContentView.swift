@@ -16,7 +16,7 @@ struct ContentView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 30){
                     ForEach(Mocks.audios){audio in
-                        AudioViewComponent(audio: audio)
+                        AudioViewComponent(playerManager: audioPlayer, audio: audio)
                     }
                 }
                 .padding()

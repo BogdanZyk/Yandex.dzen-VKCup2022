@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AudioViewComponent: View {
     
-    @EnvironmentObject var playerManager: AudioPlayerManger
+    @ObservedObject var playerManager: AudioPlayerManger
     
     let audio: Audio
     
@@ -70,10 +70,9 @@ struct AudioViewComponent_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black
-            AudioViewComponent(audio: Mocks.audios[1])
+            AudioViewComponent(playerManager: AudioPlayerManger(), audio: Mocks.audios[1])
                 .padding()
         }
-        .environmentObject(AudioPlayerManger())
     }
 }
 

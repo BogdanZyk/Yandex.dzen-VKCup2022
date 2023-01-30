@@ -43,7 +43,7 @@ struct AudioSimplesSlider: View {
                 }
             }
         }
-        .simultaneousGesture(DragGesture(minimumDistance: 2)
+        .gesture(DragGesture(minimumDistance: 2)
             .onChanged({ dragValue in
                 
                 guard isPlay else {return}
@@ -80,10 +80,9 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black
-            AudioViewComponent(audio: Mocks.audios[3])
+            AudioViewComponent(playerManager: AudioPlayerManger(), audio: Mocks.audios[3])
                 .padding()
         }
-        .environmentObject(AudioPlayerManger())
     }
 }
 

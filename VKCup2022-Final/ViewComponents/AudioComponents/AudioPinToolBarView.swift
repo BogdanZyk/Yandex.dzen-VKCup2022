@@ -94,6 +94,9 @@ extension AudioPinToolBarView {
     
     private func backwardLabel(isForward: Bool) -> some View{
         Image(isForward ? "forward" : "backward")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: 26)
     }
 }
 

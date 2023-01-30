@@ -12,13 +12,14 @@ import Combine
 
 class AudioPlayerManger: ObservableObject {
     
+    private var player = AVPlayer()
     
     @Published var currentTime: Double = .zero
     @Published var currentAudio: Audio?
     @Published var isPlaying: Bool = false
-    private var player: AVPlayer!
     @Published var session: AVAudioSession!
     @Published var currentRate: Float = 1.0
+    @Published var isPinAudio: Bool = false
     private var subscriptions = Set<AnyCancellable>()
     
     private var timeObserver: Any?
@@ -27,6 +28,8 @@ class AudioPlayerManger: ObservableObject {
         removeTimeObserver()
     }
     
+    
+    //MARK: - Public
     
     var scrubState: PlayerScrubState = .reset {
         didSet {
@@ -38,10 +41,29 @@ class AudioPlayerManger: ObservableObject {
         }
     }
     
-    var isSetAudio: Bool{
-        currentAudio != nil
+    func audioAction(_ audio: Audio){
+        setAudio(audio)
+        if isPlaying {
+            pauseAudio()
+        } else {
+            playAudio(audio)
+        }
     }
-
+    
+    
+    func resetAudio() {
+        withAnimation(.easeOut(duration: 0.2)) {
+            isPinAudio = false
+        }
+        pauseAudio()
+        currentAudio = nil
+        currentTime = .zero
+        currentRate = 1.0
+    }
+    
+    
+    
+    //MARK: - Private
     
     private func startTimeControlSubscriptions(){
         player.publisher(for: \.timeControlStatus)
@@ -65,20 +87,20 @@ class AudioPlayerManger: ObservableObject {
         guard currentAudio?.id != audio.id, let url = URL(string: audio.url) else {return}
         AVAudioSessionManager.share.configurePlaybackSession()
         removeTimeObserver()
-        currentAudio = nil
         currentTime = .zero
-        withAnimation {
-            currentAudio = audio
+        currentAudio = audio
+        withAnimation(.easeInOut(duration: 0.2)) {
+            isPinAudio = true
         }
         player = AVPlayer(url: url)
         startTimeControlSubscriptions()
     }
     
-    func udateRate(){
+    private func udateRate(){
         player.playImmediately(atRate: currentRate)
     }
     
-  private func startTimer() {
+    private func startTimer() {
         
         let interval = CMTimeMake(value: 1, timescale: 2)
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
@@ -98,27 +120,16 @@ class AudioPlayerManger: ObservableObject {
         }
     }
     
-   private func playerDidFinishPlaying() {
-        print("DidFinishPlaying")
+    private func playerDidFinishPlaying() {
+        withAnimation(.easeInOut(duration: 0.2)) {
+            isPinAudio = false
+        }
         self.player.pause()
         self.player.seek(to: .zero)
         currentAudio?.resetRemainingDuration()
-        withAnimation {
-            currentAudio = nil
-        }
+        currentAudio = nil
         currentTime = .zero
     }
-    
- 
-    func audioAction(_ audio: Audio){
-        setAudio(audio)
-        if isPlaying {
-            pauseAudio()
-        } else {
-            playAudio(audio)
-        }
-    }
-    
     
     public func setBackwardOrForward(isForward: Bool){
         let seconds = isForward ? (currentTime + 15.0) : (currentTime - 15.0)
@@ -129,7 +140,7 @@ class AudioPlayerManger: ObservableObject {
         scrubState = .scrubEnded(seconds)
     }
     
-   private func playAudio(_ audio: Audio) {
+    private func playAudio(_ audio: Audio) {
         if isPlaying{
             pauseAudio()
         } else {
@@ -145,21 +156,13 @@ class AudioPlayerManger: ObservableObject {
     private func pauseAudio() {
         player.pause()
     }
-
+    
     private func removeTimeObserver(){
         if let timeObserver = timeObserver {
             player.removeTimeObserver(timeObserver)
         }
     }
-
     
-    func resetAudio() {
-        pauseAudio()
-        currentAudio = nil
-        currentTime = .zero
-        currentRate = 1.0
-    }
-
 }
 
 
