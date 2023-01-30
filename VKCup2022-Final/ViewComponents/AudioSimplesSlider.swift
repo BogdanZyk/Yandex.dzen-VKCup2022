@@ -43,7 +43,7 @@ struct AudioSimplesSlider: View {
                 }
             }
         }
-        .gesture(DragGesture(minimumDistance: 2)
+        .simultaneousGesture(DragGesture(minimumDistance: 2)
             .onChanged({ dragValue in
                 
                 guard isPlay else {return}

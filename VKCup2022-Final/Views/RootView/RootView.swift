@@ -1,0 +1,115 @@
+//
+//  RootView.swift
+//  VKCup2022-Final
+//
+//  Created by Богдан Зыков on 30.01.2023.
+//
+
+import SwiftUI
+
+struct RootView: View {
+    @StateObject private var audioPlayer = AudioPlayerManger()
+    @Environment(\.safeAreaInsets) var safeAreaInsets
+    @State private var currentTab: TabEnum = .home
+    
+    init(){
+        UITabBar.appearance().isHidden = true
+    }
+    
+    var body: some View {
+        ZStack(alignment: .bottom){
+            TabView(selection: $currentTab) {
+                ContentView()
+                    .tag(TabEnum.home)
+                Text("reels")
+                    .tag(TabEnum.reels)
+                Text("video")
+                    .tag(TabEnum.video)
+                Text("profile")
+                    .tag(TabEnum.profile)
+            }
+            
+            tabBarView
+            
+        }
+        .environmentObject(audioPlayer)
+        .ignoresSafeArea(.all, edges: .bottom)
+    }
+}
+
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        RootView()
+    }
+}
+
+
+extension RootView{
+    private var tabBarView: some View{
+        VStack(spacing: 0) {
+            if audioPlayer.isSetAudio{
+                AudioPinToolBarView(playerManager: audioPlayer)
+                    .animation(.easeInOut, value: audioPlayer.isSetAudio)
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+            }
+            ZStack(alignment: .top){
+                Color.primaryBg
+                VStack(spacing: 0){
+                    Rectangle()
+                        .fill(Color.lightGray.opacity(0.3))
+                        .frame(height: 1)
+                        .padding(.horizontal, -16)
+                    HStack{
+                        ForEach(TabEnum.allCases, id:\.self){ tab in
+                            VStack(spacing: 4){
+                                tab.image
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 18)
+                                Text(tab.label)
+                                    .font(.caption2)
+                            }
+                            .foregroundColor(currentTab == tab ? .white : .lightGray)
+                            .onTapGesture {
+                                currentTab = tab
+                            }
+                            .hCenter()
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 10)
+                }
+            }
+            .frame(height: 50 + safeAreaInsets.bottom)
+        }
+    }
+}
+
+
+
+
+enum TabEnum: Int, CaseIterable{
+    case home, reels, create, video, profile
+    
+    
+    var image: Image{
+        switch self {
+        case .home: return .homeTab
+        case .reels: return .reelsTab
+        case .create: return .createTab
+        case .video: return .videoTab
+        case .profile: return .profileTab
+        }
+    }
+    
+    var label: String{
+        switch self {
+        case .home: return "Главная"
+        case .reels: return "Ролики"
+        case .create: return "Создать"
+        case .video: return "Видео"
+        case .profile: return "Профиль"
+        }
+    }
+}

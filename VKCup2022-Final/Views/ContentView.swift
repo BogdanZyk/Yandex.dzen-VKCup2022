@@ -9,13 +9,15 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @StateObject var audioPlayer = AudioPlayerManger()
+    @EnvironmentObject var audioPlayer: AudioPlayerManger
     var body: some View {
         ZStack(alignment: .top){
             Color.primaryBg.ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10){
-                    AudioViewComponent(audio: Mocks.audios[1])
+                VStack(spacing: 30){
+                    ForEach(Mocks.audios){audio in
+                        AudioViewComponent(audio: audio)
+                    }
                 }
                 .padding()
             }
@@ -27,5 +29,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AudioPlayerManger())
     }
 }

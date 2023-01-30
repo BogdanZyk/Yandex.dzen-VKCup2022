@@ -37,6 +37,10 @@ class AudioPlayerManger: ObservableObject {
             }
         }
     }
+    
+    var isSetAudio: Bool{
+        currentAudio != nil
+    }
 
     
     private func startTimeControlSubscriptions(){
@@ -62,6 +66,7 @@ class AudioPlayerManger: ObservableObject {
         AVAudioSessionManager.share.configurePlaybackSession()
         removeTimeObserver()
         currentAudio = nil
+        currentTime = .zero
         withAnimation {
             currentAudio = audio
         }
@@ -115,6 +120,15 @@ class AudioPlayerManger: ObservableObject {
     }
     
     
+    public func setBackwardOrForward(isForward: Bool){
+        let seconds = isForward ? (currentTime + 15.0) : (currentTime - 15.0)
+        if seconds >= currentAudio?.duration ?? 0 || seconds <= 0{
+            scrubState = .scrubEnded(0)
+            return
+        }
+        scrubState = .scrubEnded(seconds)
+    }
+    
    private func playAudio(_ audio: Audio) {
         if isPlaying{
             pauseAudio()
@@ -139,16 +153,12 @@ class AudioPlayerManger: ObservableObject {
     }
 
     
-//    func removeAudio() {
-//        if let url = currentAudio?.url{
-//            pauseAudio()
-//            do {
-//                try FileManager.default.removeItem(at: url)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+    func resetAudio() {
+        pauseAudio()
+        currentAudio = nil
+        currentTime = .zero
+        currentRate = 1.0
+    }
 
 }
 

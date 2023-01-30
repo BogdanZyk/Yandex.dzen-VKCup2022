@@ -27,7 +27,7 @@ struct AudioViewComponent: View {
     }
     
     private var remainingDuration: String{
-        if let audio = playerManager.currentAudio, audio.id == audio.id{
+        if let audio = playerManager.currentAudio, audio.id == audio.id, isPlayCurrentAudio{
             return "\(audio.remainingDuration.minuteSeconds)"
         }else{
             return "\(audio.remainingDuration.minuteSeconds)"

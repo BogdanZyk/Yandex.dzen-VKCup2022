@@ -24,6 +24,9 @@
 		5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A322987BD77002AF471 /* LoaderView.swift */; };
 		5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A372987CDC9002AF471 /* Mocks.swift */; };
 		5A0C8A3A2987D469002AF471 /* CreatePodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A392987D469002AF471 /* CreatePodcastView.swift */; };
+		5A0C8A3D2987F987002AF471 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A3C2987F987002AF471 /* RootView.swift */; };
+		5A0C8A3F2987FAAF002AF471 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A3E2987FAAF002AF471 /* Image.swift */; };
+		5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		5A0C8A322987BD77002AF471 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		5A0C8A372987CDC9002AF471 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		5A0C8A392987D469002AF471 /* CreatePodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePodcastView.swift; sourceTree = "<group>"; };
+		5A0C8A3C2987F987002AF471 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5A0C8A3E2987FAAF002AF471 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPinToolBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 				5A0C8A362987CDBF002AF471 /* Mocks */,
 				5A0C8A1929859EBF002AF471 /* View.swift */,
 				5A0C8A1B29859ED8002AF471 /* Color.swift */,
+				5A0C8A3E2987FAAF002AF471 /* Image.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 		5A0C8A1D29859EEA002AF471 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A3B2987F975002AF471 /* RootView */,
 				5A0C8A342987BEA9002AF471 /* Podcast */,
 				5A0C8A0429859DB2002AF471 /* ContentView.swift */,
 			);
@@ -174,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
+				5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */,
 			);
 			path = AudioComponents;
 			sourceTree = "<group>";
@@ -184,6 +193,14 @@
 				5A0C8A372987CDC9002AF471 /* Mocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		5A0C8A3B2987F975002AF471 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A3C2987F987002AF471 /* RootView.swift */,
+			);
+			path = RootView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,11 +278,14 @@
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
 				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
+				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
 				5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */,
 				5A0C8A0529859DB2002AF471 /* ContentView.swift in Sources */,
+				5A0C8A3D2987F987002AF471 /* RootView.swift in Sources */,
 				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,
+				5A0C8A3F2987FAAF002AF471 /* Image.swift in Sources */,
 				5A0C8A1A29859EBF002AF471 /* View.swift in Sources */,
 				5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */,
 				5A0C8A3A2987D469002AF471 /* CreatePodcastView.swift in Sources */,
