@@ -10,30 +10,29 @@ import SwiftUI
 struct AudioPinToolBarView: View {
     @ObservedObject var playerManager: AudioPlayerManger
     var body: some View {
-        ZStack{
-            Color.primaryBg
-            VStack(spacing: 0) {
-                if let audio = playerManager.currentAudio{
-                    ProgressView(value: playerManager.currentTime, total: audio.duration)
-                        .progressViewStyle(LinerProgressStyle())
-                        .frame(height: 4)
-                }
-                Spacer()
-                HStack{
-                    playButton
-                    Spacer()
-                    
-                    title
-                    
-                    Spacer()
-                    closeButton
-                }
-                .foregroundColor(.white)
-                .padding(.horizontal)
-                Spacer()
+
+        VStack(spacing: 0) {
+            if let audio = playerManager.currentPodcast?.audio{
+                ProgressView(value: playerManager.currentTime, total: audio.duration)
+                    .progressViewStyle(LinerProgressStyle())
+                    .frame(height: 4)
             }
+            HStack{
+                playButton
+                Spacer()
+                
+                title
+                
+                Spacer()
+                closeButton
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal)
+            .padding(.top, 5)
+            Spacer()
         }
         .frame(height: 50)
+        .background(Color.primaryBg)
     }
 }
 
@@ -47,7 +46,7 @@ struct AudioPinToolBarView_Previews: PreviewProvider {
 extension AudioPinToolBarView {
     private var playButton: some View{
         Button {
-            if let audio = playerManager.currentAudio{
+            if let audio = playerManager.currentPodcast{
                 playerManager.audioAction(audio)
             }
         } label: {
@@ -66,22 +65,23 @@ extension AudioPinToolBarView {
     }
     
     private var title: some View{
-        HStack(spacing: 16){
+        HStack(alignment: .lastTextBaseline, spacing: 5){
             Button {
                 playerManager.setBackwardOrForward(isForward: false)
             } label: {
                 backwardLabel(isForward: false)
             }
             
-            VStack(alignment: .center){
-                Text("RozetKed")
-                    .lineLimit(1)
-                    .font(.subheadline.weight(.medium))
-                Text("Squid Game Podcast")
+            VStack(alignment: .center, spacing: 1){
+                Text("Подкаст")
                     .lineLimit(1)
                     .font(.caption2)
                     .foregroundColor(.lightGray)
+                Text(playerManager.currentPodcast?.channelName ?? "--")
+                    .lineLimit(1)
+                    .font(.system(size: 14, weight: .medium))
             }
+            .frame(maxWidth: 80)
             
             Button {
                 playerManager.setBackwardOrForward(isForward: true)
@@ -89,14 +89,13 @@ extension AudioPinToolBarView {
                 backwardLabel(isForward: true)
             }
         }
-        
     }
     
     private func backwardLabel(isForward: Bool) -> some View{
         Image(isForward ? "forward" : "backward")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(height: 26)
+            .frame(height: 28)
     }
 }
 

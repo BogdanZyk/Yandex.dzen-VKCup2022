@@ -13,13 +13,21 @@ struct Post: Identifiable{
     var id = UUID()
     var text: String
     var imageUrl: String?
-    var podcastAudio: Audio
-    var userInfo: UserInfo
+    var podcastAudio: Podcast?
+    var channelInfo: ChannelInfo
     
     
     
-    struct UserInfo{
-        var fullName: String
+    
+    struct ChannelInfo{
+        var name: String
         var avatar: String
     }
+}
+
+
+struct Podcast{
+    var id = UUID()
+    var audio: Audio
+    var channelName: String
 }

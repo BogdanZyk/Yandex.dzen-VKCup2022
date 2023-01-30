@@ -15,7 +15,7 @@ class AudioPlayerManger: ObservableObject {
     private var player = AVPlayer()
     
     @Published var currentTime: Double = .zero
-    @Published var currentAudio: Audio?
+    @Published var currentPodcast: Podcast?
     @Published var isPlaying: Bool = false
     @Published var session: AVAudioSession!
     @Published var currentRate: Float = 1.0
@@ -41,12 +41,12 @@ class AudioPlayerManger: ObservableObject {
         }
     }
     
-    func audioAction(_ audio: Audio){
-        setAudio(audio)
+    func audioAction(_ podcast: Podcast){
+        setAudio(podcast)
         if isPlaying {
             pauseAudio()
         } else {
-            playAudio(audio)
+            playAudio()
         }
     }
     
@@ -56,7 +56,7 @@ class AudioPlayerManger: ObservableObject {
             isPinAudio = false
         }
         pauseAudio()
-        currentAudio = nil
+        currentPodcast = nil
         currentTime = .zero
         currentRate = 1.0
     }
@@ -83,12 +83,12 @@ class AudioPlayerManger: ObservableObject {
     }
     
     
-    private func setAudio(_ audio: Audio){
-        guard currentAudio?.id != audio.id, let url = URL(string: audio.url) else {return}
+    private func setAudio(_ podcast: Podcast){
+        guard currentPodcast?.id != podcast.id, let url = URL(string: podcast.audio.url) else {return}
         AVAudioSessionManager.share.configurePlaybackSession()
         removeTimeObserver()
         currentTime = .zero
-        currentAudio = audio
+        currentPodcast = podcast
         withAnimation(.easeInOut(duration: 0.2)) {
             isPinAudio = true
         }
@@ -110,7 +110,7 @@ class AudioPlayerManger: ObservableObject {
             switch self.scrubState {
             case .reset:
                 self.currentTime = time
-                self.currentAudio?.updateRemainingDuration(time)
+                self.currentPodcast?.audio.updateRemainingDuration(time)
             case .scrubStarted:
                 break
             case .scrubEnded(let seekTime):
@@ -126,21 +126,21 @@ class AudioPlayerManger: ObservableObject {
         }
         self.player.pause()
         self.player.seek(to: .zero)
-        currentAudio?.resetRemainingDuration()
-        currentAudio = nil
+        currentPodcast?.audio.resetRemainingDuration()
+        currentPodcast = nil
         currentTime = .zero
     }
     
     public func setBackwardOrForward(isForward: Bool){
         let seconds = isForward ? (currentTime + 15.0) : (currentTime - 15.0)
-        if seconds >= currentAudio?.duration ?? 0 || seconds <= 0{
+        if seconds >= currentPodcast?.audio.duration ?? 0 || seconds <= 0{
             scrubState = .scrubEnded(0)
             return
         }
         scrubState = .scrubEnded(seconds)
     }
     
-    private func playAudio(_ audio: Audio) {
+    private func playAudio() {
         if isPlaying{
             pauseAudio()
         } else {

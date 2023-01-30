@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct PodcastPostView: View {
+    let post: Post
     @EnvironmentObject var playerManager: AudioPlayerManger
     var body: some View {
         VStack(alignment: .leading, spacing: 16){
             postHeader
             postTextContent
+            //storySection
             postImage
             podcastSectionView
-            linkPreview
+            //linkPreview
             postInfo
             postActionSection
         }
@@ -31,7 +33,7 @@ struct PodcastPostView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.primaryBg
-            PodcastPostView()
+            PodcastPostView(post: Mocks.posts[0])
         }
         .environmentObject(AudioPlayerManger())
     }
@@ -42,11 +44,13 @@ extension PodcastPostView{
     private var postHeader: some View{
         HStack{
             HStack(spacing: 15){
-                Circle()
+                NukeLazyImage(strUrl: post.channelInfo.avatar)
+                    .clipShape(Circle())
                     .frame(width: 46, height: 46)
                 VStack(alignment: .leading, spacing: 2){
-                    Text("RozetKed")
+                    Text(post.channelInfo.name)
                         .font(.system(size: 16).weight(.medium))
+                        
                     Text("28K подписчиков")
                         .font(.system(size: 14).weight(.light))
                 }
@@ -56,26 +60,33 @@ extension PodcastPostView{
                 .font(.subheadline.bold())
                 .foregroundColor(.accentColor)
         }
+        
     }
     
     private var postTextContent: some View{
         VStack(alignment: .leading, spacing: 10){
-            Text("Новый нашумевший сериал “Игра в кальмара” ужасный, хотите знать почему?")
+            Text(post.text)
+                .lineSpacing(3.5)
                 .lineLimit(5)
                 .font(.system(size: 16, weight: .medium))
         }
     }
     
+    @ViewBuilder
     private var podcastSectionView: some View{
-        AudioViewComponent(playerManager: playerManager, audio: Mocks.audios[2])
-            .padding(.vertical, 10)
+        if let podcast = post.podcastAudio{
+            AudioPodcastViewComponent(playerManager: playerManager, podcast: podcast)
+                .padding(.vertical, 10)
+        }
     }
     
+    @ViewBuilder
     private var postImage: some View{
-        Rectangle()
-            .fill(Color.gray)
-            .padding(.horizontal, -16)
-            .frame(height: 200)
+        if let image = post.imageUrl{
+            NukeLazyImage(strUrl: image)
+                .padding(.horizontal, -16)
+                .frame(height: 200)
+        }
     }
     
     private var linkPreview: some View{
@@ -127,5 +138,14 @@ extension PodcastPostView{
                     .rotationEffect(.degrees(180))
             }
         }
+    }
+}
+
+
+extension PodcastPostView{
+    
+    private var storySection: some View{
+        PostStoryViewComponent()
+            .padding(.horizontal, -16)
     }
 }

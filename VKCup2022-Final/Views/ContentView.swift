@@ -13,14 +13,14 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .top){
             Color.primaryBg.ignoresSafeArea()
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 30){
-                    ForEach(Mocks.audios){audio in
-                        AudioViewComponent(playerManager: audioPlayer, audio: audio)
-                    }
-                }
-                .padding()
-            }
+//            ScrollView(.vertical, showsIndicators: false) {
+//                VStack(spacing: 30){
+//                    ForEach(Mocks.audios){audio in
+//                        AudioPodcastViewComponent(playerManager: audioPlayer, audio: audio)
+//                    }
+//                }
+//                .padding()
+//            }
         }
         .environmentObject(audioPlayer)
     }

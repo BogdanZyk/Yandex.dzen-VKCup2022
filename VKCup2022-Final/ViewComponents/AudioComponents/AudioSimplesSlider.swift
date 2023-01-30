@@ -50,7 +50,9 @@ struct AudioSimplesSlider: View {
                 
                 let translation = dragValue.translation
                 
-                dragGestureTranslation = (translation.width + lastDragValue)
+                let scaleFactor = duration >= 360 ? 2 : 0.5
+                
+                dragGestureTranslation = (translation.width * scaleFactor + lastDragValue)
                 
                 // Set the start marker of the slider
                 dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
@@ -80,7 +82,7 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black
-            AudioViewComponent(playerManager: AudioPlayerManger(), audio: Mocks.audios[3])
+            AudioPodcastViewComponent(playerManager: AudioPlayerManger(), podcast: .init(audio: Mocks.audios[1], channelName: ""))
                 .padding()
         }
     }

@@ -1,5 +1,5 @@
 //
-//  AudioViewComponent.swift
+//  AudioPodcastViewComponent.swift
 //  VKCup2022-Final
 //
 //  Created by Богдан Зыков on 28.01.2023.
@@ -7,35 +7,35 @@
 
 import SwiftUI
 
-struct AudioViewComponent: View {
+struct AudioPodcastViewComponent: View {
     
     @ObservedObject var playerManager: AudioPlayerManger
     
-    let audio: Audio
+    let podcast: Podcast
     
     
     private var soundSamples: [Float]? {
-        if let audio = playerManager.currentAudio, audio.id == audio.id{
+        if let audio = playerManager.currentPodcast?.audio, audio.id == audio.id{
             return audio.decibles
         }else{
-            return self.audio.decibles
+            return self.podcast.audio.decibles
         }
     }
     
     private var isPlayCurrentAudio: Bool{
-        (playerManager.currentAudio?.id == audio.id) && playerManager.isPlaying
+        (playerManager.currentPodcast?.id == podcast.id) && playerManager.isPlaying
     }
     
     private var remainingDuration: String{
-        if let audio = playerManager.currentAudio, audio.id == audio.id, isPlayCurrentAudio{
+        if let audio = playerManager.currentPodcast?.audio, audio.id == audio.id, isPlayCurrentAudio{
             return "\(audio.remainingDuration.minuteSeconds)"
         }else{
-            return "\(audio.remainingDuration.minuteSeconds)"
+            return "\(podcast.audio.remainingDuration.minuteSeconds)"
         }
     }
     
     private var isSetCurrentAudio: Bool{
-        playerManager.currentAudio?.id == audio.id
+        playerManager.currentPodcast?.id == podcast.id
     }
     
     var body: some View {
@@ -46,13 +46,13 @@ struct AudioViewComponent: View {
             
             HStack(alignment: .center, spacing: 0) {
                 
-                playPauseButton(audio)
+                playPauseButton
                 
                 if let soundSamples{
-                    AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
+                    AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: podcast.audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
                         .hCenter()
                         .onTapGesture {
-                            playerManager.audioAction(audio)
+                            playerManager.audioAction(podcast)
                         }
                 }
                 
@@ -70,13 +70,13 @@ struct AudioViewComponent_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black
-            AudioViewComponent(playerManager: AudioPlayerManger(), audio: Mocks.audios[1])
+            AudioPodcastViewComponent(playerManager: AudioPlayerManger(), podcast: .init(audio: Mocks.audios[1], channelName: ""))
                 .padding()
         }
     }
 }
 
-extension AudioViewComponent{
+extension AudioPodcastViewComponent{
     
     private var icon: String{
         isPlayCurrentAudio ?  "pause.fill" : "play.fill"
@@ -105,12 +105,12 @@ extension AudioViewComponent{
     
 }
 
-extension AudioViewComponent{
+extension AudioPodcastViewComponent{
     
 
-    private func playPauseButton(_ audio: Audio) -> some View{
+    private var playPauseButton: some View{
         Button {
-            playerManager.audioAction(audio)
+            playerManager.audioAction(podcast)
         } label: {
             Image(systemName: icon)
                 .resizable()

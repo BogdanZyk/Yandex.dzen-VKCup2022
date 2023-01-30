@@ -23,10 +23,30 @@ class Mocks{
     
     static let audios: [Audio] = [
         .init(url: "https://mave-ua.b-cdn.net/podcasts/83cd9f40-5a0c-4935-b5e2-815b1b5fdb9d/episodes/7041463c-5f7a-4e28-894f-0862a708d410.mp3", duration: 732, decibles: decibles),
-        .init(url: "https://muzati.net/music/0-0-1-20606-20", duration: 145, decibles: decibles),
         .init(url: "https://muzati.net/music/0-0-1-20580-20", duration: 139, decibles: decibles),
-        .init(url: "https://muzati.net/music/0-0-1-20564-20", duration: 212, decibles: decibles)
+        .init(url: "https://muzati.net/music/0-0-1-20564-20", duration: 212, decibles: decibles),
     ]
     
+    
+    static let posts: [Post] = [
+        
+        
+        .init(
+        text: "Магия Apple или ничего необычного? Всех приветствую! В октябре свой отпуск я провела, путешествуя по городам Турции. Так я посетила официальный Apple Store в Стамбуле. О нём сегодня и пойдёт речь.",
+        imageUrl: "https://avatars.dzeninfra.ru/get-zen_doc/5221694/pub_6373f050c613f77a96145ffb_6373f05bc613f77a96146119/scale_1200",
+        podcastAudio: .init(audio: audios[0], channelName: "Bloha.ru"),
+        channelInfo: .init(name: "Bloha.ru", avatar: "https://avatars.dzeninfra.ru/get-zen-logos/1520972/pub_5dcbbb0e136c034ec1805087_614ae97fd2124317a70da7fb/scale_2400")
+        ),
+        
+        
+            .init(text: "Новый нашумевший сериал “Игра в кальмара” ужасный, хотите знать почему? Разбор сериала в новом подкасте.",
+                  imageUrl: "https://infobiscuit.com/wp-content/uploads/2021/11/%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB-%D0%B8%D0%B3%D1%80%D0%B0-%D0%B2-%D0%BA%D0%B0%D0%BB%D1%8C%D0%BC%D0%B0%D1%80%D0%B0-%D0%B4%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.jpg",
+                  podcastAudio: .init(audio: audios[1], channelName: "Aнтон Лавров"),
+                  channelInfo: .init(name: "Aнтон Лавров", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6rHdhb-HpWoC8JKiBBOSv376q3Z49BvUxdwdpdAwvaLiuTH9sXEECwMyQ00dQxnAYFA&usqp=CAU")
+                 ),
+        
+        
+        
+    ]
     
 }

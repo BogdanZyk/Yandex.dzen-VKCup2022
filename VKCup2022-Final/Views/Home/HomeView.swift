@@ -14,12 +14,12 @@ struct HomeView: View {
             navView
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 10) {
-                    ForEach(Mocks.audios){audio in
-                        PodcastPostView()
+                    ForEach(Mocks.posts){post in
+                        PodcastPostView(post: post)
                     }
                 }
                 .padding(.top)
-                .padding(.bottom, 60)
+                .padding(.bottom, 100)
             }
         }
         .background(Color.primaryBg.ignoresSafeArea())

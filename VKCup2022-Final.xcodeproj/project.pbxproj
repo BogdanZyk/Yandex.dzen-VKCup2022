@@ -17,7 +17,7 @@
 		5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A242985A0F4002AF471 /* Audio.swift */; };
 		5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A262985A171002AF471 /* AvAudioSessionManager.swift */; };
 		5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A282985A265002AF471 /* AudioRecorderManager.swift */; };
-		5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */; };
+		5A0C8A2B2985AA00002AF471 /* AudioPodcastViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2A2985AA00002AF471 /* AudioPodcastViewComponent.swift */; };
 		5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */; };
 		5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */; };
 		5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */; };
@@ -28,6 +28,9 @@
 		5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */; };
 		5A6444832988477300044920 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444822988477300044920 /* Post.swift */; };
 		5A6444862988497600044920 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444852988497600044920 /* HomeView.swift */; };
+		5A644489298855CC00044920 /* PostStoryViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644488298855CC00044920 /* PostStoryViewComponent.swift */; };
+		5A64448C298858A800044920 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A64448B298858A800044920 /* NukeUI */; };
+		5A64448E298858DF00044920 /* NukeLazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64448D298858DF00044920 /* NukeLazyImage.swift */; };
 		5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +46,7 @@
 		5A0C8A242985A0F4002AF471 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		5A0C8A262985A171002AF471 /* AvAudioSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvAudioSessionManager.swift; sourceTree = "<group>"; };
 		5A0C8A282985A265002AF471 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
-		5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewComponent.swift; sourceTree = "<group>"; };
+		5A0C8A2A2985AA00002AF471 /* AudioPodcastViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPodcastViewComponent.swift; sourceTree = "<group>"; };
 		5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManger.swift; sourceTree = "<group>"; };
 		5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSimplesSlider.swift; sourceTree = "<group>"; };
@@ -54,6 +57,8 @@
 		5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPinToolBarView.swift; sourceTree = "<group>"; };
 		5A6444822988477300044920 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5A6444852988497600044920 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5A644488298855CC00044920 /* PostStoryViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStoryViewComponent.swift; sourceTree = "<group>"; };
+		5A64448D298858DF00044920 /* NukeLazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeLazyImage.swift; sourceTree = "<group>"; };
 		5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A64448C298858A800044920 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */,
-				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
+				5A0C8A2A2985AA00002AF471 /* AudioPodcastViewComponent.swift */,
 				5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */,
+				5A64448D298858DF00044920 /* NukeLazyImage.swift */,
 			);
 			path = AudioComponents;
 			sourceTree = "<group>";
@@ -221,6 +228,7 @@
 		5A6444872988557100044920 /* PostStoryViewComponent */ = {
 			isa = PBXGroup;
 			children = (
+				5A644488298855CC00044920 /* PostStoryViewComponent.swift */,
 			);
 			path = PostStoryViewComponent;
 			sourceTree = "<group>";
@@ -241,6 +249,9 @@
 			dependencies = (
 			);
 			name = "VKCup2022-Final";
+			packageProductDependencies = (
+				5A64448B298858A800044920 /* NukeUI */,
+			);
 			productName = "VKCup2022-Final";
 			productReference = 5A0C89FF29859DB2002AF471 /* VKCup2022-Final.app */;
 			productType = "com.apple.product-type.application";
@@ -269,6 +280,9 @@
 				Base,
 			);
 			mainGroup = 5A0C89F629859DB2002AF471;
+			packageReferences = (
+				5A64448A298858A800044920 /* XCRemoteSwiftPackageReference "NukeUI" */,
+			);
 			productRefGroup = 5A0C8A0029859DB2002AF471 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,11 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A64448E298858DF00044920 /* NukeLazyImage.swift in Sources */,
 				5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */,
 				5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */,
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
 				5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */,
 				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
+				5A644489298855CC00044920 /* PostStoryViewComponent.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
@@ -313,7 +329,7 @@
 				5A0C8A1A29859EBF002AF471 /* View.swift in Sources */,
 				5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */,
 				5A6444832988477300044920 /* Post.swift in Sources */,
-				5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */,
+				5A0C8A2B2985AA00002AF471 /* AudioPodcastViewComponent.swift in Sources */,
 				5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +541,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A64448A298858A800044920 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A64448B298858A800044920 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A64448A298858A800044920 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A0C89F729859DB2002AF471 /* Project object */;
 }
