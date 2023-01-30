@@ -21,6 +21,7 @@
 		5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */; };
 		5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */; };
 		5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */; };
+		5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A322987BD77002AF471 /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManger.swift; sourceTree = "<group>"; };
 		5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSimplesSlider.swift; sourceTree = "<group>"; };
+		5A0C8A322987BD77002AF471 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,9 @@
 		5A0C8A1829859EA2002AF471 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A352987BF0D002AF471 /* AudioComponents */,
 				5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */,
+				5A0C8A322987BD77002AF471 /* LoaderView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -128,8 +132,8 @@
 		5A0C8A1D29859EEA002AF471 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A342987BEA9002AF471 /* Podcast */,
 				5A0C8A0429859DB2002AF471 /* ContentView.swift */,
-				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +155,21 @@
 				5A0C8A2C2985AA36002AF471 /* AudioPlayerManger.swift */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		5A0C8A342987BEA9002AF471 /* Podcast */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Podcast;
+			sourceTree = "<group>";
+		};
+		5A0C8A352987BF0D002AF471 /* AudioComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
+			);
+			path = AudioComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +245,7 @@
 				5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */,
 				5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */,
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
+				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
 				5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */,

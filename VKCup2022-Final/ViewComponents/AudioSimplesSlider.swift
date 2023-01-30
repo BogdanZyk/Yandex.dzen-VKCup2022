@@ -43,7 +43,7 @@ struct AudioSimplesSlider: View {
                 }
             }
         }
-        .gesture(DragGesture(minimumDistance: 0)
+        .gesture(DragGesture(minimumDistance: 2)
             .onChanged({ dragValue in
                 
                 guard isPlay else {return}
@@ -91,7 +91,7 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
                 AudioViewComponent(url: "https://muzati.net/music/0-0-1-20674-20")
                 AudioViewComponent(url: "https://muzati.net/music/0-0-1-20146-20")
             }
-
+            .environmentObject(AudioPlayerManger())
         }
     }
 }

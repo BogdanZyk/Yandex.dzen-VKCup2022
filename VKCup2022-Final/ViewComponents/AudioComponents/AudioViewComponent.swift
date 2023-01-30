@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AudioViewComponent: View {
     
-    @StateObject var playerManager = AudioPlayerManger()
+    @EnvironmentObject var playerManager: AudioPlayerManger
     
     @StateObject private var viewModel: AudioViewModel
     
@@ -43,29 +43,38 @@ struct AudioViewComponent: View {
     }
     
     var body: some View {
-            VStack(alignment: .leading) {
-                if let audio = viewModel.audio, viewModel.state == .load{
-                    HStack(alignment: .center, spacing: 10) {
-                        Button {
-                            playerManager.audioAction(audio)
-                        } label: {
-                            Image(systemName: icon)
-                                .imageScale(.large)
+        ZStack{
+            if viewModel.state == .loading{
+                LoaderView()
+            }else{
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.lightGray, lineWidth: 1.5)
+                VStack(alignment: .center) {
+                    if let audio = viewModel.audio, viewModel.state == .load{
+                        HStack(alignment: .center, spacing: 0) {
+                            
+                            playPauseButton(audio)
+                            
+                            if let soundSamples{
+                                AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
+                                    .hCenter()
+                                    .onTapGesture {
+                                        playerManager.audioAction(audio)
+                                    }
+                            }
+                            
+                            audioDuration
                         }
-                        
-                        if let soundSamples{
-                            AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
-                        }
-                        Text(remainingDuration)
-                            .font(.caption2)
+                    }else{
+                        Text("Ошибка при загрузке аудио")
+                            .font(.subheadline)
                     }
-                }else if viewModel.state == .loading{
-                    ProgressView()
-                }else{
-                    Text("Ошибка загрузки аудио")
                 }
+                .foregroundColor(.white)
+                .padding(.horizontal)
             }
-            .foregroundColor(.white)
+        }
+        .frame(height: 50)
     }
 }
 
@@ -75,8 +84,9 @@ struct AudioViewComponent_Previews: PreviewProvider {
         ZStack{
             Color.black
             AudioViewComponent(url: "https://muzati.net/music/0-0-1-20146-20")
+                .padding()
         }
-        
+        .environmentObject(AudioPlayerManger())
     }
 }
 
@@ -110,33 +120,28 @@ extension AudioViewComponent{
 }
 
 extension AudioViewComponent{
-//    private var activeMicButton: some View{
-//        Button {
-//            recordManager.startRecording()
-//        } label: {
-//            Image(systemName: "mic")
-//                .imageScale(.medium)
-//                .foregroundColor(.black)
-//                .padding()
-//        }
-//    }
-//
-//    private var InRecordingView: some View{
-//        HStack{
-//            Circle()
-//                .fill(Color.red)
-//                .frame(width: 8, height: 8)
-//                .opacity(recordManager.toggleColor ? 0 : 1)
-//                .animation(.easeInOut(duration: 0.6), value: recordManager.toggleColor)
-//            Text(recordManager.remainingDuration.minutesSecondsMilliseconds)
-//                .font(.subheadline)
-//            Spacer()
-//            Label("left to cancel", systemImage: "chevron.left")
-//                .font(.subheadline)
-//                .padding(.trailing, 30)
-//            Spacer()
-//
-//        }
-//        .frame(height: 44)
-//    }
+    
+
+    private func playPauseButton(_ audio: Audio) -> some View{
+        Button {
+            playerManager.audioAction(audio)
+        } label: {
+            Image(systemName: icon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 35, height: 20)
+                .foregroundColor(.white)
+        }
+    }
+    
+    private var audioDuration: some View{
+        Text(remainingDuration)
+            .font(.caption)
+            .frame(width: 35)
+    }
 }
+
+
+
+
+

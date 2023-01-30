@@ -23,12 +23,16 @@ class AudioViewModel: ObservableObject{
     func crateAudioModel(for url: String){
         guard let url = URL(string: url) else {return}
         state = .loading
-        bufferService.buffer(url: url, samplesCount: Int(UIScreen.main.bounds.width * 0.5) / 4) {[weak self] (duration, decibles) in
+        bufferService.buffer(url: url, samplesCount: Int(UIScreen.main.bounds.width * 0.4) / 4) {[weak self] (duration, decibles) in
             guard let self = self else {return}
             self.audio = .init(url: url, duration: duration.rounded(.up), decibles: decibles)
-            self.state = .load
+            withAnimation {
+                self.state = .load
+            }
         }onError: { [weak self] _ in
-            self?.state = .error
+            withAnimation {
+                self?.state = .error
+            }
         }
     }
     
