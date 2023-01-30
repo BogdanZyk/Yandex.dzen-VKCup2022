@@ -23,9 +23,9 @@ class AudioRecorderManager : ObservableObject {
     @Published var toggleColor : Bool = false
     @Published var timerCount : Timer?
     @Published var blinkingCount : Timer?
-    @Published var remainingDuration: Double = 0
+    @Published var currentRecordTime: Double = 0
     
-    var returnedAudioUrlStr: String?
+    var returnedAudio: Audio?
     
     init(){
         AVAudioSessionManager.share.configureRecordAudioSessionCategory()
@@ -37,7 +37,6 @@ class AudioRecorderManager : ObservableObject {
     
         let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let audioCachURL = path.appendingPathComponent("Voice-\(UUID().uuidString).m4a")
-        self.returnedAudioUrlStr = audioCachURL.absoluteString
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -50,7 +49,7 @@ class AudioRecorderManager : ObservableObject {
             audioRecorder.record()
             recordState = .recording
             timerCount = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (value) in
-                self.remainingDuration += 0.1
+                self.currentRecordTime += 0.1
             })
             blinkColor()
             
@@ -63,27 +62,55 @@ class AudioRecorderManager : ObservableObject {
     func stopRecording(){
         print("DEBUG:", "stopRecording")
         audioRecorder.stop()
-        timerCount!.invalidate()
-        blinkingCount!.invalidate()
+        resetTimer()
+        prepairAudio()
     }
     
     func cancel(){
         print("DEBUG:", "cancel")
         audioRecorder.stop()
-        timerCount!.invalidate()
-        blinkingCount!.invalidate()
-        returnedAudioUrlStr = nil
+        returnedAudio = nil
         recordState = .empty
-        remainingDuration = 0
+        resetTimer()
+        removeRecordedAudio()
     }
-
-    func uploadAudio(completion: @escaping (String) -> Void){
-        print("DEBUG:", "uploadAudio")
-        if let urlStr = returnedAudioUrlStr{
-            completion(urlStr)
+        
+   private func prepairAudio(){
+        print("DEBUG:", "prepairAudio")
+        let url = audioRecorder.url
+        
+        ///количество симплов в расчете на размер экрана для визуализации звука
+        let cimplesCount = Int(UIScreen.main.bounds.width * 0.4) / 4
+        
+        bufferService.buffer(url: url, samplesCount: cimplesCount) { [weak self] (duration, decibles) in
+            guard let self = self else {return}
+            
+            self.returnedAudio = .init(url: url.absoluteString, duration: duration, decibles: decibles)
+            self.recordState = .recordered
+            self.removeRecordedAudio()
+            
+        } onError: {[weak self] _ in
+            self?.recordState = .error
         }
     }
     
+    
+    private func resetTimer(){
+        timerCount!.invalidate()
+        blinkingCount!.invalidate()
+        self.currentRecordTime = 0
+    }
+    
+    private func removeRecordedAudio(){
+        
+        if FileManager.default.fileExists(atPath: audioRecorder.url.absoluteString){
+            do {
+                try FileManager.default.removeItem(at: audioRecorder.url)
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     private func blinkColor() {
         
@@ -97,7 +124,7 @@ class AudioRecorderManager : ObservableObject {
 
 
 enum AudioRecordEnum: Int{
-    case recording, recordered, empty
+    case recording, recordered, empty, error
 }
 
 

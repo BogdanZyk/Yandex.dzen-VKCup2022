@@ -11,68 +11,55 @@ struct AudioViewComponent: View {
     
     @EnvironmentObject var playerManager: AudioPlayerManger
     
-    @StateObject private var viewModel: AudioViewModel
-    
-    init(url: String){
-        self._viewModel = StateObject(wrappedValue: AudioViewModel(url))
-    }
+    let audio: Audio
     
     
-    private var soundSamples: [Audio.AudioSimple]? {
-        if let audio = playerManager.currentAudio, audio.id == viewModel.audio?.id{
-            return audio.audioSimples
+    private var soundSamples: [Float]? {
+        if let audio = playerManager.currentAudio, audio.id == audio.id{
+            return audio.decibles
         }else{
-           return viewModel.audio?.audioSimples
+            return self.audio.decibles
         }
     }
     
     private var isPlayCurrentAudio: Bool{
-        (playerManager.currentAudio?.id == viewModel.audio?.id) && playerManager.isPlaying
+        (playerManager.currentAudio?.id == audio.id) && playerManager.isPlaying
     }
     
     private var remainingDuration: String{
-        if let audio = playerManager.currentAudio, audio.id == viewModel.audio?.id{
+        if let audio = playerManager.currentAudio, audio.id == audio.id{
             return "\(audio.remainingDuration.minuteSeconds)"
         }else{
-            return "\(viewModel.audio?.remainingDuration.minuteSeconds ?? "")"
+            return "\(audio.remainingDuration.minuteSeconds)"
         }
     }
     
     private var isSetCurrentAudio: Bool{
-        playerManager.currentAudio?.id == viewModel.audio?.id
+        playerManager.currentAudio?.id == audio.id
     }
     
     var body: some View {
         ZStack{
-            if viewModel.state == .loading{
-                LoaderView()
-            }else{
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.lightGray, lineWidth: 1.5)
-                VStack(alignment: .center) {
-                    if let audio = viewModel.audio, viewModel.state == .load{
-                        HStack(alignment: .center, spacing: 0) {
-                            
-                            playPauseButton(audio)
-                            
-                            if let soundSamples{
-                                AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
-                                    .hCenter()
-                                    .onTapGesture {
-                                        playerManager.audioAction(audio)
-                                    }
-                            }
-                            
-                            audioDuration
+            
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.lightGray, lineWidth: 1.5)
+            
+            HStack(alignment: .center, spacing: 0) {
+                
+                playPauseButton(audio)
+                
+                if let soundSamples{
+                    AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
+                        .hCenter()
+                        .onTapGesture {
+                            playerManager.audioAction(audio)
                         }
-                    }else{
-                        Text("Ошибка при загрузке аудио")
-                            .font(.subheadline)
-                    }
                 }
-                .foregroundColor(.white)
-                .padding(.horizontal)
+                
+                audioDuration
             }
+            .foregroundColor(.white)
+            .padding(.horizontal)
         }
         .frame(height: 50)
     }
@@ -83,7 +70,7 @@ struct AudioViewComponent_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black
-            AudioViewComponent(url: "https://muzati.net/music/0-0-1-20146-20")
+            AudioViewComponent(audio: Mocks.audios[1])
                 .padding()
         }
         .environmentObject(AudioPlayerManger())

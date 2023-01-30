@@ -22,6 +22,8 @@
 		5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */; };
 		5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */; };
 		5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A322987BD77002AF471 /* LoaderView.swift */; };
+		5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A372987CDC9002AF471 /* Mocks.swift */; };
+		5A0C8A3A2987D469002AF471 /* CreatePodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A392987D469002AF471 /* CreatePodcastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		5A0C8A302986B55D002AF471 /* AudioSimplesSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSimplesSlider.swift; sourceTree = "<group>"; };
 		5A0C8A322987BD77002AF471 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		5A0C8A372987CDC9002AF471 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		5A0C8A392987D469002AF471 /* CreatePodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePodcastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		5A0C8A1529859E6B002AF471 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A362987CDBF002AF471 /* Mocks */,
 				5A0C8A1929859EBF002AF471 /* View.swift */,
 				5A0C8A1B29859ED8002AF471 /* Color.swift */,
 			);
@@ -160,6 +165,7 @@
 		5A0C8A342987BEA9002AF471 /* Podcast */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C8A392987D469002AF471 /* CreatePodcastView.swift */,
 			);
 			path = Podcast;
 			sourceTree = "<group>";
@@ -170,6 +176,14 @@
 				5A0C8A2A2985AA00002AF471 /* AudioViewComponent.swift */,
 			);
 			path = AudioComponents;
+			sourceTree = "<group>";
+		};
+		5A0C8A362987CDBF002AF471 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A372987CDC9002AF471 /* Mocks.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +267,8 @@
 				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,
 				5A0C8A1A29859EBF002AF471 /* View.swift in Sources */,
+				5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */,
+				5A0C8A3A2987D469002AF471 /* CreatePodcastView.swift in Sources */,
 				5A0C8A2B2985AA00002AF471 /* AudioViewComponent.swift in Sources */,
 				5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */,
 			);

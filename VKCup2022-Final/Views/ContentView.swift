@@ -15,9 +15,7 @@ struct ContentView: View {
             Color.primaryBg.ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10){
-                   
-                    
-                    AudioViewComponent(url: "https://muzati.net/music/0-0-1-20146-20")
+                    AudioViewComponent(audio: Mocks.audios[1])
                 }
                 .padding()
             }

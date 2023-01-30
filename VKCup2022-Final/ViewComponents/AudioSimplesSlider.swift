@@ -50,16 +50,14 @@ struct AudioSimplesSlider: View {
                 
                 let translation = dragValue.translation
                 
-                dragGestureTranslation = (translation.width * 0.5 + lastDragValue)
+                dragGestureTranslation = (translation.width + lastDragValue)
                 
                 // Set the start marker of the slider
                 dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
                 
-                // Set the end marker of the slider
-                dragGestureTranslation = dragGestureTranslation > duration ? duration :  dragGestureTranslation
                 
                 // Get the increments for the stepepdInterval
-                value = roundToFactor(value: dragGestureTranslation, factor: duration / CGFloat(magnitudes.count))
+                value = roundToFactor(value: dragGestureTranslation, factor: duration / CGFloat(magnitudes.count) )
                 onEditingChanged(true)
                 
             })
@@ -68,11 +66,8 @@ struct AudioSimplesSlider: View {
                     // Set the start marker of the slider
                     dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
                     
-                    // Set the end marker of the slider
-                    dragGestureTranslation = dragGestureTranslation > duration ? duration : dragGestureTranslation
-                    
                     // Storing last drag value
-                    lastDragValue = dragGestureTranslation
+                    lastDragValue = dragGestureTranslation >= duration ? 0 : dragGestureTranslation
                     
                     onEditingChanged(false)
                 })
@@ -84,15 +79,11 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
     @State static var value: Double = 20
     static var previews: some View {
         ZStack{
-            Color.primary
-       // https://muzati.net/music/0-0-1-20674-20
-            //https://muzati.net/music/0-0-1-20146-20
-            VStack{
-                AudioViewComponent(url: "https://muzati.net/music/0-0-1-20674-20")
-                AudioViewComponent(url: "https://muzati.net/music/0-0-1-20146-20")
-            }
-            .environmentObject(AudioPlayerManger())
+            Color.black
+            AudioViewComponent(audio: Mocks.audios[3])
+                .padding()
         }
+        .environmentObject(AudioPlayerManger())
     }
 }
 
@@ -102,8 +93,8 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
 
 extension AudioSimplesSlider{
     private func normalizeSoundLevel(level: Float) -> CGFloat {
-        let level = max(0.2, CGFloat(level) + 50) / 2
+        let level = max(0.2, CGFloat(level) + 20) / 2
         
-        return CGFloat(level * 1.15)
+        return CGFloat(level * 0.5)
     }
 }

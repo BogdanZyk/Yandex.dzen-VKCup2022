@@ -58,14 +58,14 @@ class AudioPlayerManger: ObservableObject {
     
     
     private func setAudio(_ audio: Audio){
-        guard currentAudio?.id != audio.id else {return}
+        guard currentAudio?.id != audio.id, let url = URL(string: audio.url) else {return}
         AVAudioSessionManager.share.configurePlaybackSession()
         removeTimeObserver()
         currentAudio = nil
         withAnimation {
             currentAudio = audio
         }
-        player = AVPlayer(url: audio.url)
+        player = AVPlayer(url: url)
         startTimeControlSubscriptions()
     }
     
@@ -98,7 +98,6 @@ class AudioPlayerManger: ObservableObject {
         self.player.pause()
         self.player.seek(to: .zero)
         currentAudio?.resetRemainingDuration()
-        currentAudio?.setDefaultColor()
         withAnimation {
             currentAudio = nil
         }
@@ -140,16 +139,16 @@ class AudioPlayerManger: ObservableObject {
     }
 
     
-    func removeAudio() {
-        if let url = currentAudio?.url{
-            pauseAudio()
-            do {
-                try FileManager.default.removeItem(at: url)
-            } catch {
-                print(error)
-            }
-        }
-    }
+//    func removeAudio() {
+//        if let url = currentAudio?.url{
+//            pauseAudio()
+//            do {
+//                try FileManager.default.removeItem(at: url)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 
 }
 
