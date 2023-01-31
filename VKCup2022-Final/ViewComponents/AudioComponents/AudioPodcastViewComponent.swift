@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AudioPodcastViewComponent: View {
-    
     @ObservedObject var playerManager: AudioPlayerManger
+    @State private var isOnAppear: Bool = false
     
     let podcast: Podcast
     
@@ -49,19 +49,26 @@ struct AudioPodcastViewComponent: View {
                 playPauseButton
                 
                 if let soundSamples{
-                    AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: podcast.audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio)
+                    AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: podcast.audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio, isPlayAnimation: isOnAppear)
                         .hCenter()
                         .onTapGesture {
                             playerManager.audioAction(podcast)
                         }
                 }
-                
-                audioDuration
+                if isOnAppear{
+                    audioDuration
+                }
             }
             .foregroundColor(.white)
             .padding(.horizontal)
         }
         .frame(height: 50)
+        .onAppear{
+            isOnAppear = true
+        }
+        .onDisappear{
+            isOnAppear = false
+        }
     }
 }
 
@@ -95,7 +102,6 @@ extension AudioPodcastViewComponent{
 
     
     private func onEditingChanged(_ scrubStarted: Bool){
-        //guard isPlayCurrentAudio else {return}
         if scrubStarted{
             playerManager.scrubState = .scrubStarted
         }else{

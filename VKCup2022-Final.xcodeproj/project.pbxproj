@@ -28,7 +28,7 @@
 		5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */; };
 		5A6444832988477300044920 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444822988477300044920 /* Post.swift */; };
 		5A6444862988497600044920 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444852988497600044920 /* HomeView.swift */; };
-		5A644489298855CC00044920 /* PostStoryViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644488298855CC00044920 /* PostStoryViewComponent.swift */; };
+		5A644489298855CC00044920 /* PostStoryScrollSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644488298855CC00044920 /* PostStoryScrollSectionView.swift */; };
 		5A64448C298858A800044920 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A64448B298858A800044920 /* NukeUI */; };
 		5A64448E298858DF00044920 /* NukeLazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64448D298858DF00044920 /* NukeLazyImage.swift */; };
 		5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */; };
@@ -57,7 +57,7 @@
 		5A0C8A402988053F002AF471 /* AudioPinToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPinToolBarView.swift; sourceTree = "<group>"; };
 		5A6444822988477300044920 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5A6444852988497600044920 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5A644488298855CC00044920 /* PostStoryViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStoryViewComponent.swift; sourceTree = "<group>"; };
+		5A644488298855CC00044920 /* PostStoryScrollSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStoryScrollSectionView.swift; sourceTree = "<group>"; };
 		5A64448D298858DF00044920 /* NukeLazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeLazyImage.swift; sourceTree = "<group>"; };
 		5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,7 +228,7 @@
 		5A6444872988557100044920 /* PostStoryViewComponent */ = {
 			isa = PBXGroup;
 			children = (
-				5A644488298855CC00044920 /* PostStoryViewComponent.swift */,
+				5A644488298855CC00044920 /* PostStoryScrollSectionView.swift */,
 			);
 			path = PostStoryViewComponent;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
 				5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */,
 				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
-				5A644489298855CC00044920 /* PostStoryViewComponent.swift in Sources */,
+				5A644489298855CC00044920 /* PostStoryScrollSectionView.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,

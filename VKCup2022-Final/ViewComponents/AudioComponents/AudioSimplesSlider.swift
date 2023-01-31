@@ -15,6 +15,7 @@ struct AudioSimplesSlider: View {
     let onEditingChanged: (Bool) -> Void
     var isPlay: Bool
     
+    var isPlayAnimation: Bool = false
     @State private var dragGestureTranslation: CGFloat = 0
     @State private var lastDragValue: CGFloat = 0
     
@@ -23,7 +24,7 @@ struct AudioSimplesSlider: View {
     }
     
     private func checkIndexInRange(_ index: Int) -> Bool{
-        guard isPlay else {return false}
+        guard isPlay, isPlayAnimation else {return false}
         return index < (Int(value) / (Int(duration) / magnitudes.count))
     }
     

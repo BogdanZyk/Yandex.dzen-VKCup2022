@@ -145,7 +145,7 @@ extension PodcastPostView{
 extension PodcastPostView{
     
     private var storySection: some View{
-        PostStoryViewComponent()
+        PostStoryScrollSectionView()
             .padding(.horizontal, -16)
     }
 }
