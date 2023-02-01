@@ -1,5 +1,5 @@
 //
-//  PodcastPostView.swift
+//  PostView.swift
 //  VKCup2022-Final
 //
 //  Created by Богдан Зыков on 30.01.2023.
@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-struct PodcastPostView: View {
+struct PostView: View {
     let post: Post
+    @EnvironmentObject var rootVM: RootViewModel
     @EnvironmentObject var playerManager: AudioPlayerManger
     var body: some View {
         VStack(alignment: .leading, spacing: 16){
             postHeader
             postTextContent
-            //storySection
-            postImage
-            podcastSectionView
+            storySection
+            //postImage
+            //podcastSectionView
             //linkPreview
             postInfo
             postActionSection
@@ -29,18 +30,19 @@ struct PodcastPostView: View {
     }
 }
 
-struct PodcastPostView_Previews: PreviewProvider {
+struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.primaryBg
-            PodcastPostView(post: Mocks.posts[0])
+            PostView(post: Mocks.posts[0])
         }
         .environmentObject(AudioPlayerManger())
+        .environmentObject(RootViewModel())
     }
 }
 
 
-extension PodcastPostView{
+extension PostView{
     private var postHeader: some View{
         HStack{
             HStack(spacing: 15){
@@ -142,10 +144,13 @@ extension PodcastPostView{
 }
 
 
-extension PodcastPostView{
+extension PostView{
     
+    @ViewBuilder
     private var storySection: some View{
-        PostStoryScrollSectionView()
-            .padding(.horizontal, -16)
+        if !post.stories.isEmpty{
+            PostStoryScrollSectionView(rootVM: rootVM, stories: post.stories)
+                .padding(.horizontal, -16)
+        }
     }
 }

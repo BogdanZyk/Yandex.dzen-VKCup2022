@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var rootVM: RootViewModel
     @EnvironmentObject var audioPlayer: AudioPlayerManger
     var body: some View {
         VStack(spacing: 0) {
@@ -15,7 +16,7 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 10) {
                     ForEach(Mocks.posts){post in
-                        PodcastPostView(post: post)
+                        PostView(post: post)
                     }
                 }
                 .padding(.top)
@@ -29,6 +30,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
+            .environmentObject(RootViewModel())
     }
 }
 

@@ -15,7 +15,7 @@ struct Post: Identifiable{
     var imageUrl: String?
     var podcastAudio: Podcast?
     var channelInfo: ChannelInfo
-    
+    var stories: [Story] = []
     
     
     

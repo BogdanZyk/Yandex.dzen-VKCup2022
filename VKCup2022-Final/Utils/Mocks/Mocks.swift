@@ -35,7 +35,7 @@ class Mocks{
         text: "Магия Apple или ничего необычного? Всех приветствую! В октябре свой отпуск я провела, путешествуя по городам Турции. Так я посетила официальный Apple Store в Стамбуле. О нём сегодня и пойдёт речь.",
         imageUrl: "https://avatars.dzeninfra.ru/get-zen_doc/5221694/pub_6373f050c613f77a96145ffb_6373f05bc613f77a96146119/scale_1200",
         podcastAudio: .init(audio: audios[0], channelName: "Bloha.ru"),
-        channelInfo: .init(name: "Bloha.ru", avatar: "https://avatars.dzeninfra.ru/get-zen-logos/1520972/pub_5dcbbb0e136c034ec1805087_614ae97fd2124317a70da7fb/scale_2400")
+        channelInfo: .init(name: "Bloha.ru", avatar: "https://avatars.dzeninfra.ru/get-zen-logos/1520972/pub_5dcbbb0e136c034ec1805087_614ae97fd2124317a70da7fb/scale_2400"), stories: stories
         ),
         
         

@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct PostStoryScrollSectionView: View {
-    @State private var showLine: Bool = false
-    @State private var location: CGPoint = .zero
+    @ObservedObject var rootVM: RootViewModel
+    var showStory: Bool = false
+    let stories: [Story]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 8) {
-                ForEach(1...5, id: \.self) {_ in
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.lightGray)
-                        .frame(width: getRect().width / 3)
+                ForEach(stories.indices, id: \.self) {index in
+                    Button {
+                        rootVM.selectedStories = (index, stories)
+                        withAnimation(.easeInOut(duration: 0.25)){
+                            rootVM.showStoryView.toggle()
+                        }
+                    } label: {
+                        StoryBodyView(model: .constant(stories[index]), isDisabled: true)
+                            .frame(width: getRect().width / 3)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .contentShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .buttonStyle(StoryButtonStyle())
                 }
             }
             .padding(.horizontal)
@@ -27,10 +37,16 @@ struct PostStoryScrollSectionView: View {
 
 struct PostStoryScrollSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        PostStoryScrollSectionView()
+        PostStoryScrollSectionView(rootVM: RootViewModel(), stories: Mocks.stories)
     }
 }
 
+struct StoryButtonStyle: ButtonStyle{
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
 
 //
 //GeometryReader { proxy in

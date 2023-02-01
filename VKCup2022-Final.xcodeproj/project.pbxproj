@@ -34,8 +34,10 @@
 		5A644493298943A600044920 /* StoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644492298943A600044920 /* StoriesView.swift */; };
 		5A64449529894D1A00044920 /* SctickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449429894D1A00044920 /* SctickerView.swift */; };
 		5A64449729894E7B00044920 /* StickerSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449629894E7B00044920 /* StickerSliderView.swift */; };
-		5A6444992989781300044920 /* HistoryBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444982989781300044920 /* HistoryBodyView.swift */; };
-		5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */; };
+		5A6444992989781300044920 /* StoryBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444982989781300044920 /* StoryBodyView.swift */; };
+		5A64449B298A961900044920 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449A298A961900044920 /* RootViewModel.swift */; };
+		5A64449D298AA3D100044920 /* TestAnnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449C298AA3D100044920 /* TestAnnimation.swift */; };
+		5ADE620629883BA2001FDFA6 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE620529883BA2001FDFA6 /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,8 +68,10 @@
 		5A644492298943A600044920 /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
 		5A64449429894D1A00044920 /* SctickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SctickerView.swift; sourceTree = "<group>"; };
 		5A64449629894E7B00044920 /* StickerSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSliderView.swift; sourceTree = "<group>"; };
-		5A6444982989781300044920 /* HistoryBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBodyView.swift; sourceTree = "<group>"; };
-		5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPostView.swift; sourceTree = "<group>"; };
+		5A6444982989781300044920 /* StoryBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBodyView.swift; sourceTree = "<group>"; };
+		5A64449A298A961900044920 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		5A64449C298AA3D100044920 /* TestAnnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnnimation.swift; sourceTree = "<group>"; };
+		5ADE620529883BA2001FDFA6 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				5A0C8A2E2985B346002AF471 /* AudioViewModel.swift */,
+				5A64449A298A961900044920 /* RootViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -168,7 +173,7 @@
 				5A6444912989437E00044920 /* ActivityView */,
 				5A6444842988496E00044920 /* Home */,
 				5A0C8A3B2987F975002AF471 /* RootView */,
-				5A0C8A342987BEA9002AF471 /* PodcastPost */,
+				5A0C8A342987BEA9002AF471 /* PostView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,12 +197,13 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
-		5A0C8A342987BEA9002AF471 /* PodcastPost */ = {
+		5A0C8A342987BEA9002AF471 /* PostView */ = {
 			isa = PBXGroup;
 			children = (
-				5ADE620529883BA2001FDFA6 /* PodcastPostView.swift */,
+				5ADE620529883BA2001FDFA6 /* PostView.swift */,
+				5A64449C298AA3D100044920 /* TestAnnimation.swift */,
 			);
-			path = PodcastPost;
+			path = PostView;
 			sourceTree = "<group>";
 		};
 		5A0C8A352987BF0D002AF471 /* AudioComponents */ = {
@@ -248,7 +254,7 @@
 				5A644492298943A600044920 /* StoriesView.swift */,
 				5A64449429894D1A00044920 /* SctickerView.swift */,
 				5A64449629894E7B00044920 /* StickerSliderView.swift */,
-				5A6444982989781300044920 /* HistoryBodyView.swift */,
+				5A6444982989781300044920 /* StoryBodyView.swift */,
 			);
 			path = ActivityView;
 			sourceTree = "<group>";
@@ -332,9 +338,9 @@
 				5A64448E298858DF00044920 /* NukeLazyImage.swift in Sources */,
 				5A0C8A292985A265002AF471 /* AudioRecorderManager.swift in Sources */,
 				5A0C8A252985A0F4002AF471 /* Audio.swift in Sources */,
-				5A6444992989781300044920 /* HistoryBodyView.swift in Sources */,
+				5A6444992989781300044920 /* StoryBodyView.swift in Sources */,
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
-				5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */,
+				5ADE620629883BA2001FDFA6 /* PostView.swift in Sources */,
 				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
 				5A644493298943A600044920 /* StoriesView.swift in Sources */,
 				5A644489298855CC00044920 /* PostStoryScrollSectionView.swift in Sources */,
@@ -342,6 +348,7 @@
 				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
 				5A0C8A2F2985B346002AF471 /* AudioViewModel.swift in Sources */,
 				5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */,
+				5A64449D298AA3D100044920 /* TestAnnimation.swift in Sources */,
 				5A0C8A3D2987F987002AF471 /* RootView.swift in Sources */,
 				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,
@@ -354,6 +361,7 @@
 				5A0C8A382987CDC9002AF471 /* Mocks.swift in Sources */,
 				5A6444832988477300044920 /* Post.swift in Sources */,
 				5A0C8A2B2985AA00002AF471 /* AudioPodcastViewComponent.swift in Sources */,
+				5A64449B298A961900044920 /* RootViewModel.swift in Sources */,
 				5A0C8A272985A171002AF471 /* AvAudioSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

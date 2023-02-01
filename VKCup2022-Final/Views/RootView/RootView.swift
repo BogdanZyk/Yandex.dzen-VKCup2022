@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var audioPlayer = AudioPlayerManger()
-    @State private var currentTab: TabEnum = .home
+    @StateObject private var rootVM = RootViewModel()
     
     init(){
         UITabBar.appearance().isHidden = true
@@ -17,7 +17,7 @@ struct RootView: View {
     
     var body: some View {
         ZStack(alignment: .bottom){
-            TabView(selection: $currentTab) {
+            TabView(selection: $rootVM.currentTab) {
                 HomeView()
                     .tag(TabEnum.home)
                 Text("reels")
@@ -27,11 +27,12 @@ struct RootView: View {
                 Text("profile")
                     .tag(TabEnum.profile)
             }
-            
             tabBarView
             
+            storyViewBuilder
         }
         .environmentObject(audioPlayer)
+        .environmentObject(rootVM)
     }
 }
 
@@ -65,9 +66,9 @@ extension RootView{
                                 Text(tab.label)
                                     .font(.caption2)
                             }
-                            .foregroundColor(currentTab == tab ? .white : .lightGray)
+                            .foregroundColor(rootVM.currentTab == tab ? .white : .lightGray)
                             .onTapGesture {
-                                currentTab = tab
+                                rootVM.currentTab = tab
                             }
                             .hCenter()
                         }
@@ -80,6 +81,19 @@ extension RootView{
     }
 }
 
+
+//MARK: - Story view
+
+extension RootView{
+    
+    @ViewBuilder
+    var storyViewBuilder: some View{
+        if rootVM.showStoryView{
+            StoriesView(close: $rootVM.showStoryView, stories: $rootVM.selectedStories.stories, currentIndex: rootVM.selectedStories.index)
+                .transition(.move(edge: .bottom))
+        }
+    }
+}
 
 
 
