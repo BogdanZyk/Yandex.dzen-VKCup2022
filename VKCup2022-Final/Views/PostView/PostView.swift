@@ -16,8 +16,8 @@ struct PostView: View {
             postHeader
             postTextContent
             storySection
-            //postImage
-            //podcastSectionView
+            postImage
+            podcastSectionView
             //linkPreview
             postInfo
             postActionSection

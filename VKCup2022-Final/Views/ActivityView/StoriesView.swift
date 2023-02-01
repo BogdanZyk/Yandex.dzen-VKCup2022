@@ -133,15 +133,16 @@ extension StoriesView{
         if translation < 0{
             translation = -translation
         }
-        
-        if translation < 100{
-            withAnimation(.default) {
-                bgOpacity = 1
-                offsetY = .zero
+        DispatchQueue.main.async {
+            if translation < 120{
+                withAnimation(.default) {
+                    bgOpacity = 1
+                    offsetY = .zero
+                }
+                
+            }else{
+                closeViewWithAnimation()
             }
-            
-        }else{
-            closeViewWithAnimation()
         }
     }
     
@@ -151,7 +152,7 @@ extension StoriesView{
             bgOpacity = 0
             offsetY.height = getRect().height
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
             withAnimation(.linear(duration: 0.1)) {
                 close.toggle()
             }
