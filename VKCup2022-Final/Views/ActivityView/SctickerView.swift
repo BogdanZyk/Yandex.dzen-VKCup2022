@@ -26,7 +26,7 @@ struct SctickerView: View {
 
 struct SctickerView_Previews: PreviewProvider {
     static var previews: some View {
-        SctickerView(sticker: .constant(.init(label: "", slideValue: 0, question: "", type: .button, offsetX: 0, offsetY: 0)))
+        SctickerView(sticker: .constant(.init(label: "😍", slideValue: 0, question: "", type: .slider, offsetX: 0, offsetY: 0)))
     }
 }
 
@@ -35,6 +35,6 @@ struct SctickerView_Previews: PreviewProvider {
 
 extension SctickerView{
     private var emojiSlider: some View{
-        StickerSliderView(label: sticker.label ?? "😀")
+        StickerSliderView(label: sticker.label ?? "😀", value: $sticker.slideValue)
     }
 }

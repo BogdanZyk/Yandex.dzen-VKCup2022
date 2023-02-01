@@ -30,8 +30,8 @@
 		5A644489298855CC00044920 /* PostStoryScrollSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644488298855CC00044920 /* PostStoryScrollSectionView.swift */; };
 		5A64448C298858A800044920 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A64448B298858A800044920 /* NukeUI */; };
 		5A64448E298858DF00044920 /* NukeLazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64448D298858DF00044920 /* NukeLazyImage.swift */; };
-		5A6444902989223D00044920 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64448F2989223D00044920 /* History.swift */; };
-		5A644493298943A600044920 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644492298943A600044920 /* HistoryView.swift */; };
+		5A6444902989223D00044920 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64448F2989223D00044920 /* Story.swift */; };
+		5A644493298943A600044920 /* StoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A644492298943A600044920 /* StoriesView.swift */; };
 		5A64449529894D1A00044920 /* SctickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449429894D1A00044920 /* SctickerView.swift */; };
 		5A64449729894E7B00044920 /* StickerSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64449629894E7B00044920 /* StickerSliderView.swift */; };
 		5A6444992989781300044920 /* HistoryBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6444982989781300044920 /* HistoryBodyView.swift */; };
@@ -62,8 +62,8 @@
 		5A6444852988497600044920 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5A644488298855CC00044920 /* PostStoryScrollSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStoryScrollSectionView.swift; sourceTree = "<group>"; };
 		5A64448D298858DF00044920 /* NukeLazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeLazyImage.swift; sourceTree = "<group>"; };
-		5A64448F2989223D00044920 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		5A644492298943A600044920 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5A64448F2989223D00044920 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		5A644492298943A600044920 /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
 		5A64449429894D1A00044920 /* SctickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SctickerView.swift; sourceTree = "<group>"; };
 		5A64449629894E7B00044920 /* StickerSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSliderView.swift; sourceTree = "<group>"; };
 		5A6444982989781300044920 /* HistoryBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBodyView.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			children = (
 				5A0C8A242985A0F4002AF471 /* Audio.swift */,
 				5A6444822988477300044920 /* Post.swift */,
-				5A64448F2989223D00044920 /* History.swift */,
+				5A64448F2989223D00044920 /* Story.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 		5A6444912989437E00044920 /* ActivityView */ = {
 			isa = PBXGroup;
 			children = (
-				5A644492298943A600044920 /* HistoryView.swift */,
+				5A644492298943A600044920 /* StoriesView.swift */,
 				5A64449429894D1A00044920 /* SctickerView.swift */,
 				5A64449629894E7B00044920 /* StickerSliderView.swift */,
 				5A6444982989781300044920 /* HistoryBodyView.swift */,
@@ -336,7 +336,7 @@
 				5A0C8A2329859FEF002AF471 /* AudioBufferService.swift in Sources */,
 				5ADE620629883BA2001FDFA6 /* PodcastPostView.swift in Sources */,
 				5A0C8A332987BD77002AF471 /* LoaderView.swift in Sources */,
-				5A644493298943A600044920 /* HistoryView.swift in Sources */,
+				5A644493298943A600044920 /* StoriesView.swift in Sources */,
 				5A644489298855CC00044920 /* PostStoryScrollSectionView.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
@@ -346,7 +346,7 @@
 				5A0C8A1C29859ED8002AF471 /* Color.swift in Sources */,
 				5A0C8A0329859DB2002AF471 /* VKCup2022_FinalApp.swift in Sources */,
 				5A64449729894E7B00044920 /* StickerSliderView.swift in Sources */,
-				5A6444902989223D00044920 /* History.swift in Sources */,
+				5A6444902989223D00044920 /* Story.swift in Sources */,
 				5A64449529894D1A00044920 /* SctickerView.swift in Sources */,
 				5A6444862988497600044920 /* HomeView.swift in Sources */,
 				5A0C8A3F2987FAAF002AF471 /* Image.swift in Sources */,

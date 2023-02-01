@@ -49,4 +49,27 @@ class Mocks{
         
     ]
     
+    
+    
+
+    static let stories: [Story] = [
+        
+        .init(image: storyImages[0], textBoxes: [.init(text: "Test text\ntext", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF"), .init(text: "Hello!🖐1", size: 30, isBold: true, offsetX: 50, offsetY: -250, color: "#FFFFFF")], sticker: .init(label: "😄", slideValue: 0, question: "", type: .slider, offsetX: 0, offsetY: 150)),
+        
+            .init(image: storyImages[1], textBoxes: [.init(text: "Прекрасный закат", size: 30, isBold: true, offsetX: 50, offsetY: -250, color: "#FFFFFF")], sticker: .init(label: "😍", slideValue: 0.5, question: "", type: .slider, offsetX: 0, offsetY: 150)),
+        
+            .init(image: storyImages[2], textBoxes: [.init(text: "Test", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF")], sticker: nil),
+        
+    ]
+    
+    
+    private static let storyImages: [Story.BackgroundImage] = [
+    
+        .init(url: "https://img2.akspic.ru/crops/1/6/0/7/5/157061/157061-yulijskie_alpy-alpy-oblako-rastenie-ekoregion-1080x1920.jpg", offsetX: 0, offsetY: 0, scale: 1.1, bgColor: "#9D9C28"),
+        .init(url: "https://images.wallpapershq.com/wallpapers/6491/thumbnail_350x621.jpg", offsetX: 0, offsetY: 0, scale: 0.8, bgColor: "#941C28"),
+        .init(url: "https://img3.akspic.ru/previews/8/1/2/0/5/150218/150218-listvennica-les-smeshannyj_hvojnyj_les-osen-priroda-360x780.jpg", offsetX: 0, offsetY: 0, scale: 1.5, bgColor: "#9D9C28")
+    
+    
+    ]
+    
 }

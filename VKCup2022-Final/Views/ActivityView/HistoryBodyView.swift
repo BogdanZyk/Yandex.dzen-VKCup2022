@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct HistoryBodyView: View {
-    @Binding var model: History
+    @Binding var model: Story
     var isDisabled: Bool = false
     var body: some View {
         ZStack{
-            if let color = model.bgColor{
+            if let color = model.image.bgColor{
                 Color(hex: color)
             }
-            NukeLazyImage(strUrl: model.imageUrl, resizingMode: .aspectFit, loadPriority: .veryHigh)
+            NukeLazyImage(strUrl: model.image.url, resizingMode: .aspectFit, loadPriority: .veryHigh)
+                .offset(x: model.image.offsetX, y: model.image.offsetY)
+                .scaleEffect(model.image.scale)
             ForEach(model.textBoxes) { text in
                 Text(text.text)
                     .font(.system(size: CGFloat(text.size), weight: text.isBold ? .bold : .medium))
