@@ -148,9 +148,8 @@ extension PostView{
     
     @ViewBuilder
     private var storySection: some View{
-        if !post.stories.isEmpty{
-            PostStoryScrollSectionView(rootVM: rootVM, stories: post.stories)
-                .padding(.horizontal, -16)
+        if !post.stories.isEmpty, let preview = post.storyPreview{
+            PostStorySectionView(rootVM: rootVM, preview: preview, stories: post.stories)
         }
     }
 }

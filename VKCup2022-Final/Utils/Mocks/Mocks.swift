@@ -36,7 +36,8 @@ class Mocks{
         imageUrl: nil,
         podcastAudio: nil,
         channelInfo: .init(name: "Bloha.ru", avatar: "https://avatars.dzeninfra.ru/get-zen-logos/1520972/pub_5dcbbb0e136c034ec1805087_614ae97fd2124317a70da7fb/scale_2400"),
-        stories: stories
+        stories: stories,
+        storyPreview: .init(title: "Test",image: "https://res.cloudinary.com/grand-canyon-university/image/fetch/w_750,h_564,c_fill,g_faces,q_auto/https://www.gcu.edu/sites/default/files/2020-09/programming.jpg")
         ),
         
         

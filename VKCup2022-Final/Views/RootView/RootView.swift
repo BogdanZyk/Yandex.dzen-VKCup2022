@@ -89,7 +89,7 @@ extension RootView{
     @ViewBuilder
     var storyViewBuilder: some View{
         if rootVM.showStoryView{
-            StoriesView(close: $rootVM.showStoryView, stories: $rootVM.selectedStories.stories, currentIndex: rootVM.selectedStories.index)
+            StoriesView(close: $rootVM.showStoryView, stories: $rootVM.selectedStories)
                 .transition(.move(edge: .bottom))
         }
     }

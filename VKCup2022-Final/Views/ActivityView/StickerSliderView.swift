@@ -14,7 +14,7 @@ struct StickerSliderView: View {
     @Binding var value: Double
     @State var dragGestureTranslation: CGFloat = 0
     @State var lastDragValue: CGFloat = 0
-    
+    @State var showParticles: Bool = false
     var sliderWidth: CGFloat = 30
     var sliderPadding: CGFloat = -5
         
@@ -51,45 +51,52 @@ struct StickerSliderView: View {
                     .frame(width: geometry.size.width, height: 8)
                     
                     // Draggable Slider
+                    ZStack{
+                        Text(label)
+                        if showParticles{
+                            Text(label)
+                                .modifier(ParticlesModifier(show: $showParticles, speed: 80, particlesMaxCount: 20))
+                        }
+                    }
+                    .frame(width: sliderWidth, height: 30)
+                    .padding(.horizontal, sliderPadding)
+                    .font(.system(size: 30))
+                    .offset(x: CGFloat(value) * slidebarSize)
                     
-                    Text(label)
-                        .font(.system(size: 30))
-                        .frame(width: sliderWidth, height: 30)
-                        .padding(.horizontal, sliderPadding)
-                        .offset(x: CGFloat(value) * slidebarSize)
-                
-                        .gesture(DragGesture(minimumDistance: 0)
-                            .onChanged({ dragValue in
-                                
-                                let translation = dragValue.translation
-                                
-                                
-                                dragGestureTranslation = CGFloat(translation.width) + lastDragValue
-                                
+                    .gesture(DragGesture(minimumDistance: 0)
+                        .onChanged({ dragValue in
+                            
+                            let translation = dragValue.translation
+                            
+                            
+                            dragGestureTranslation = CGFloat(translation.width) + lastDragValue
+                            
+                            // Set the start marker of the slider
+                            dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
+                            
+                            // Set the end marker of the slider
+                            dragGestureTranslation = dragGestureTranslation > slidebarSize ? slidebarSize :  dragGestureTranslation
+                            
+                            
+                            
+                            // Set the slider value (Fluid)
+                            self.value = (Double(min(max(0, dragGestureTranslation), dragGestureTranslation)).rounded() / slidebarSize)
+                            
+                            
+                        })
+                            .onEnded({ dragValue in
                                 // Set the start marker of the slider
                                 dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
                                 
                                 // Set the end marker of the slider
-                                dragGestureTranslation = dragGestureTranslation > slidebarSize ? slidebarSize :  dragGestureTranslation
+                                dragGestureTranslation = dragGestureTranslation > slidebarSize ? slidebarSize : dragGestureTranslation
                                 
-                               
+                                // Storing last drag value
+                                lastDragValue = dragGestureTranslation
                                 
-                                // Set the slider value (Fluid)
-                                self.value = (Double(min(max(0, dragGestureTranslation), dragGestureTranslation)).rounded() / slidebarSize)
-                                
-                                
+                                showParticles = value >= 0.8
                             })
-                                .onEnded({ dragValue in
-                                    // Set the start marker of the slider
-                                    dragGestureTranslation = dragGestureTranslation >= 0 ? dragGestureTranslation : 0
-                                    
-                                    // Set the end marker of the slider
-                                    dragGestureTranslation = dragGestureTranslation > slidebarSize ? slidebarSize : dragGestureTranslation
-                                    
-                                    // Storing last drag value
-                                    lastDragValue = dragGestureTranslation
-                                })
-                        )
+                    )
                 }
             }
             .frame(width: 220, height: 30)

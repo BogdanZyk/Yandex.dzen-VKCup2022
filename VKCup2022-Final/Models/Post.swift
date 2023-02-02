@@ -11,17 +11,22 @@ import Foundation
 
 struct Post: Identifiable{
     var id = UUID()
-    var text: String
+    let text: String
     var imageUrl: String?
     var podcastAudio: Podcast?
-    var channelInfo: ChannelInfo
+    let channelInfo: ChannelInfo
     var stories: [Story] = []
-    
+    var storyPreview: StoryPreview?
     
     
     struct ChannelInfo{
         var name: String
         var avatar: String
+    }
+    
+    struct StoryPreview{
+        let title: String
+        let image: String
     }
 }
 

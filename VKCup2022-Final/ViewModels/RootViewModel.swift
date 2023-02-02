@@ -10,7 +10,7 @@ import SwiftUI
 class RootViewModel: ObservableObject{
     
     @Published var currentTab: TabEnum = .home
-    @Published var selectedStories: (index: Int, stories: [Story]) = (0, [])
+    @Published var selectedStories = [Story]()
     @Published var showStoryView: Bool = false
     
 }

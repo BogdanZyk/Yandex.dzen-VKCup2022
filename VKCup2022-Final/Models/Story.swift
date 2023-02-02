@@ -18,12 +18,13 @@ import Foundation
  /// Стикер слайдер
  /// Стикер кнопка
  /// Стикер ответа на вопрос
+ /// Фото превью
+ /// Заголовок превью
 
 
 struct Story: Identifiable{
     var id = UUID()
-    var image: BackgroundImage
-   
+    let image: BackgroundImage
     var textBoxes: [TextBox] = []
     var sticker: Sticker?
 }
