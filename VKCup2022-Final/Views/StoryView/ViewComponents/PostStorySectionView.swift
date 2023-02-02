@@ -28,7 +28,7 @@ struct PostStorySectionView: View {
             .background(Color.secondaryGray2)
             .cornerRadius(16)
         }
-        .buttonStyle(StoryButtonStyle())
+        .buttonStyle(ScaleButtonStyle())
     }
 }
 
@@ -77,10 +77,13 @@ extension PostStorySectionView{
 }
 
 
-struct StoryButtonStyle: ButtonStyle{
+struct ScaleButtonStyle: ButtonStyle{
+    
+    var scale: CGFloat = 0.95
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+            .scaleEffect(configuration.isPressed ? scale : 1)
     }
 }
 

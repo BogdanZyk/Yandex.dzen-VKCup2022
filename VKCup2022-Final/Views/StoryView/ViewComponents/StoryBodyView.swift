@@ -27,7 +27,7 @@ struct StoryBodyView: View {
                         .scaleEffect(proxy.size.width / getRect().width)
                 }
                 if let sticker = Binding<Sticker>($model.sticker) {
-                    SctickerView(sticker: sticker)
+                    StickerView(sticker: sticker)
                         .scaleEffect(proxy.size.width / getRect().width)
                 }
             }

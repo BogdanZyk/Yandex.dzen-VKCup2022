@@ -67,7 +67,7 @@ struct Sticker: Identifiable{
     
     
     enum StickerType: Int, CaseIterable{
-        case slider, button, question
+        case slider, reaction, question
     }
     
 }
