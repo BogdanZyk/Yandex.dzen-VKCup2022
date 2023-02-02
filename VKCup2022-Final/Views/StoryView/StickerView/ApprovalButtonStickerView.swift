@@ -10,6 +10,16 @@ import SwiftUI
 struct ApprovalButtonStickerView: View {
     @Binding var isVoted: Bool
     var value: Double
+    var labels: [String]
+    
+    var yesLabel: String{
+        labels.first ?? "Да"
+    }
+    
+    var noLabel: String{
+        labels.last ?? "Нет"
+    }
+    
     var body: some View {
         GeometryReader { proxy in
             HStack(spacing: 0){
@@ -29,7 +39,10 @@ struct ApprovalButtonStickerView: View {
 
 struct ApprovalButtonStickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ApprovalButtonStickerView(isVoted: .constant(false), value: 0.55)
+        VStack{
+            ApprovalButtonStickerView(isVoted: .constant(false), value: 0.55, labels: [])
+            ApprovalButtonStickerView(isVoted: .constant(false), value: 0.55, labels: ["👍", "👎"])
+        }
     }
 }
 
@@ -39,7 +52,7 @@ extension ApprovalButtonStickerView{
             isVoted.toggle()
         } label: {
             VStack(spacing: 6){
-                Text(isApproval ? "Да" : "Нет")
+                Text(isApproval ? yesLabel : noLabel)
                 if isVoted{
                     Text("\(String(format: "%0.0f", (persent * 100)))%")
                         .font(.system(size: 18, weight: .bold))

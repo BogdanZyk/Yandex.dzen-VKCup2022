@@ -73,9 +73,7 @@ class AudioPlayerManger: ObservableObject {
                     self?.isPlaying = true
                 case .paused:
                     self?.isPlaying = false
-                case .waitingToPlayAtSpecifiedRate:
-                    break
-                @unknown default:
+                default:
                     break
                 }
             }
@@ -116,6 +114,13 @@ class AudioPlayerManger: ObservableObject {
             case .scrubEnded(let seekTime):
                 self.scrubState = .reset
                 self.currentTime = seekTime
+            }
+            
+            let playbackLikelyToKeepUp = self.player.currentItem?.isPlaybackLikelyToKeepUp
+            if !(playbackLikelyToKeepUp ?? false){
+                print("loading")
+            }else{
+              
             }
         }
     }

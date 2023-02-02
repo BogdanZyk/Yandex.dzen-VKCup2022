@@ -26,7 +26,7 @@ struct StickerView: View {
 
 struct StickerView_Previews: PreviewProvider {
     static var previews: some View {
-        StickerView(sticker: .constant(.init(label: "😍", slideValue: 0, question: "", type: .slider, offsetX: 0, offsetY: 0)))
+        StickerView(sticker: .constant(.init(label: "😍", slideValue: 0, type: .slider, offsetX: 0, offsetY: 0)))
     }
 }
 
@@ -43,7 +43,7 @@ extension StickerView{
 
 extension StickerView{
     private var approvalButton: some View{
-        ApprovalButtonStickerView(isVoted: $sticker.isVoted, value: sticker.votedCount)
+        ApprovalButtonStickerView(isVoted: $sticker.isVoted, value: sticker.votedCount, labels: sticker.buttonLabels)
     }
 }
 

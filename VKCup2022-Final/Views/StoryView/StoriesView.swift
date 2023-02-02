@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoriesView: View {
+    @State private var isLike: Bool = false
     @StateObject var counTimer: CountTimer
     @Binding var close: Bool
     @State var bgOpacity: Double = 1
@@ -43,7 +44,7 @@ struct StoriesView: View {
                     likeButton
                 }
                 .offset(y: offsetY.height)
-                .frame(height: getRect().height - 100, alignment: .center)
+                .frame(height: getRect().height / 1.1, alignment: .center)
                 .gesture(DragGesture().updating($draggingOffset, body: { value, outValue, _ in
                     outValue = value.translation
                     onChage(draggingOffset)
@@ -95,11 +96,11 @@ extension StoriesView{
     
     private var likeButton: some View{
         Button {
-            
+            isLike.toggle()
         } label: {
             Image("like")
                 .renderingMode(.template)
-                .foregroundColor(.lightGray)
+                .foregroundColor(isLike ? .accentColor : .lightGray)
                 .padding()
                 .background(Color.white.opacity(0.2))
                 .clipShape(Circle())
@@ -136,7 +137,7 @@ extension StoriesView{
     private func onChage(_ value: CGSize){
         let haldHeight = getRect().height / 2
         DispatchQueue.main.async {
-            offsetY = value
+            offsetY = value.height > 0 ? value : CGSize()
             let progress = offsetY.height / haldHeight
             withAnimation {
                 bgOpacity = Double(1 - (progress < 0 ?  -progress : progress))
@@ -145,10 +146,7 @@ extension StoriesView{
         
     }
     private func onEnded(_ value: DragGesture.Value){
-        var translation = value.translation.height
-        if translation < 0{
-            translation = -translation
-        }
+        let translation = value.translation.height
         DispatchQueue.main.async {
             if translation < 120{
                 withAnimation(.default) {

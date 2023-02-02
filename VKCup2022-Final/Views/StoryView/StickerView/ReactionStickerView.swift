@@ -31,7 +31,7 @@ struct ReactionStickerView: View {
             if showParticles{
                 ZStack{
                     ForEach(1...10, id: \.self){_ in
-                        Text("😍")
+                        Text(label)
                             .offset(x: Double.random(in: -200...200), y: Double.random(in: -200...200))
                             .font(.system(size: 60))
                             .modifier(ParticlesModifier(show: $show, speed: Double.random(in: 50...150), duration: duration, particlesMaxCount: 5))

@@ -43,7 +43,7 @@ class Mocks{
         
             .init(text: "Новый нашумевший сериал “Игра в кальмара” ужасный, хотите знать почему? Разбор сериала в новом подкасте.",
                   imageUrl: "https://infobiscuit.com/wp-content/uploads/2021/11/%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB-%D0%B8%D0%B3%D1%80%D0%B0-%D0%B2-%D0%BA%D0%B0%D0%BB%D1%8C%D0%BC%D0%B0%D1%80%D0%B0-%D0%B4%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.jpg",
-                  podcastAudio: .init(audio: audios[1], channelName: "Aнтон Лавров"),
+                  podcastAudio: .init(audio: audios[0], channelName: "Aнтон Лавров"),
                   channelInfo: .init(name: "Aнтон Лавров", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6rHdhb-HpWoC8JKiBBOSv376q3Z49BvUxdwdpdAwvaLiuTH9sXEECwMyQ00dQxnAYFA&usqp=CAU")
                  ),
         
@@ -56,22 +56,31 @@ class Mocks{
 
     static let stories: [Story] = [
         
-        .init(image: storyImages[0], textBoxes: [.init(text: "Test text\ntext", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF"), .init(text: "Hello!🖐1", size: 30, isBold: true, offsetX: 50, offsetY: -250, color: "#FFFFFF")], sticker: .init(label: "😄", slideValue: 0, question: "", type: .slider, offsetX: 0, offsetY: 150)),
+        .init(image: storyImages[0], textBoxes: [
+            
+            .init(text: "Позиционирование b2b компаний в IT: вредные советы и рабочие рекомендации", size: 26, isBold: true, offsetX: -30, offsetY: -150, color: "#FFFFFF"), .init(text: "О подходах и решениях, делающих бренды безликими,\nи продуманной дифференциации в категории", size: 18, isBold: true, offsetX: -20, offsetY: 0, color: "#FFFFFF")], sticker: nil),
         
-            .init(image: storyImages[1], textBoxes: [.init(text: "Прекрасный закат", size: 30, isBold: true, offsetX: 50, offsetY: -250, color: "#FFFFFF")], sticker: .init(label: "😍", question: "", type: .reaction, offsetX: 0, offsetY: 150)),
         
-            .init(image: storyImages[2], textBoxes: [.init(text: "Test", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF")], sticker: .init(question: "Какой-то вопрос?", type: .button, offsetX: 0, offsetY: 150)),
+            .init(image: storyImages[1], textBoxes: [.init(text: "Вредный совет № 1: Целиться в рынки, а не в людей", size: 26, isBold: true, offsetX: -20, offsetY: -150, color: "#FFFFFF"), .init(text: "Часто B2B бренды воспринимаю свою аудиторию как функцию в компаниях с определенной географией, масштабом бизнеса и отраслью.", size: 20, isBold: true, offsetX: -10, offsetY: 0, color: "#FFFFFF")], sticker: .init(label: "🔥", type: .slider, offsetX: 0, offsetY: 150)),
+        
+        
+            .init(image: storyImages[2], textBoxes: [.init(text: "Вредный совет № 2: Считать технологичность и инновационность своим преимуществом", size: 26, isBold: true, offsetX: 0, offsetY: -150, color: "#FFFFFF"), .init(text: "Бренды делают фокус на своей технологичности как на главном преимуществе, забывая о том, что в их категориях это must have", size: 20, isBold: true, offsetX: 0, offsetY: 0, color: "#FFFFFF")], sticker: .init(label: "🤩", type: .reaction, offsetX: 0, offsetY: 150)),
+        
+        
+            .init(image: storyImages[3], textBoxes: [.init(text: "Вредный совет № 3: Забыть про эмоциональную составляющую бренда", size: 26, isBold: true, offsetX: 0, offsetY: -150, color: "#FFFFFF"), .init(text: "Во многих tech-категориях коммуникация брендов находится на уровне исключительно продуктовых и функциональных преимуществ", size: 20, isBold: true, offsetX: -10, offsetY: 0, color: "#FFFFFF")], sticker: .init(type: .button, buttonLabels : ["👍", "👎"], offsetX: 0, offsetY: 150)),
         
     ]
     
     
     private static let storyImages: [Story.BackgroundImage] = [
     
-        .init(url: "https://img2.akspic.ru/crops/1/6/0/7/5/157061/157061-yulijskie_alpy-alpy-oblako-rastenie-ekoregion-1080x1920.jpg", offsetX: 0, offsetY: 0, scale: 1.1, bgColor: "#9D9C28"),
-        .init(url: "https://images.wallpapershq.com/wallpapers/6491/thumbnail_350x621.jpg", offsetX: 0, offsetY: 0, scale: 0.8, bgColor: "#941C28"),
-        .init(url: "https://img3.akspic.ru/previews/8/1/2/0/5/150218/150218-listvennica-les-smeshannyj_hvojnyj_les-osen-priroda-360x780.jpg", offsetX: 0, offsetY: 0, scale: 1.5, bgColor: "#9D9C28")
-    
+        .init(url: "https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 3, bgColor: "#9D9C28"),
+        .init(url: "https://images.unsplash.com/photo-1544652478-6653e09f18a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 7, bgColor: "#941C28"),
+        .init(url: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80", offsetX: 0, offsetY: 0, scale: 4, bgColor: "#9D9C28"),
+        .init(url: "https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", offsetX: 4,  offsetY: 0, scale: 3, bgColor: "#9D9C28")
     
     ]
     
 }
+
+

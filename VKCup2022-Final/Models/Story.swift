@@ -60,9 +60,8 @@ struct Sticker: Identifiable{
     var slideValue: Double = 0.0
     var isVoted: Bool = false
     var votedCount: Double = 0.0
-    var question: String = ""
     var type: StickerType
-    
+    var buttonLabels = [String]()
     var offsetX: Double
     var offsetY: Double
     

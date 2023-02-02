@@ -12,23 +12,25 @@ struct StoryBodyView: View {
     var isDisabled: Bool = false
     var body: some View {
         GeometryReader { proxy in
+            let textWidth = proxy.size.width - 32
             ZStack{
                 if let color = model.image.bgColor{
                     Color(hex: color)
                 }
-                NukeLazyImage(strUrl: model.image.url, resizingMode: .aspectFit, loadPriority: .veryHigh)
+                NukeLazyImage(strUrl: model.image.url, resizeHeight: 600, resizingMode: .aspectFit, loadPriority: .veryHigh)
                     .offset(x: model.image.offsetX, y: model.image.offsetY)
                     .scaleEffect(model.image.scale)
                 ForEach(model.textBoxes) { text in
                     Text(text.text)
                         .font(.system(size: CGFloat(text.size), weight: text.isBold ? .bold : .medium))
                         .foregroundColor(Color(hex: text.color))
+                        .multilineTextAlignment(.leading)
                         .offset(x: text.offsetX, y: text.offsetY)
-                        .scaleEffect(proxy.size.width / getRect().width)
+                        .frame(width: textWidth)
+                        .scaleEffect(textWidth / getRect().width)
                 }
                 if let sticker = Binding<Sticker>($model.sticker) {
                     StickerView(sticker: sticker)
-                        .scaleEffect(proxy.size.width / getRect().width)
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
@@ -41,6 +43,6 @@ struct StoryBodyView: View {
 
 //struct HistoryBodyView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        HistoryBodyView(model: <#Binding<History>#>)
+//        HistoryBodyView(model: )
 //    }
 //}
