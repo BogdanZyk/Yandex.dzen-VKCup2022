@@ -60,7 +60,7 @@ class Mocks{
         
             .init(image: storyImages[1], textBoxes: [.init(text: "Прекрасный закат", size: 30, isBold: true, offsetX: 50, offsetY: -250, color: "#FFFFFF")], sticker: .init(label: "😍", question: "", type: .reaction, offsetX: 0, offsetY: 150)),
         
-            .init(image: storyImages[2], textBoxes: [.init(text: "Test", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF")], sticker: .init(question: "Какой-то вопрос?", type: .question, offsetX: 0, offsetY: 150)),
+            .init(image: storyImages[2], textBoxes: [.init(text: "Test", size: 30, isBold: true, offsetX: -100, offsetY: -100, color: "#FFFFFF")], sticker: .init(question: "Какой-то вопрос?", type: .button, offsetX: 0, offsetY: 150)),
         
     ]
     

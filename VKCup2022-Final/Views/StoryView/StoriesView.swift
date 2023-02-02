@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct StoriesView: View {
+    @StateObject var counTimer: CountTimer
     @Binding var close: Bool
     @State var bgOpacity: Double = 1
     @State private var offsetY: CGSize = .zero
     @GestureState var draggingOffset: CGSize = .zero
     @Binding var stories: [Story]
-    @State var currentIndex = 0
+    
+    init(stories: Binding<[Story]>, close: Binding<Bool>){
+        self._stories = stories
+        self._close = close
+        self._counTimer = StateObject(wrappedValue: CountTimer(max: stories.wrappedValue.count, interval: 18))
+    }
+    
+    var indexProgress: Int{
+        Int(counTimer.progress)
+    }
+    
     var body: some View {
         ZStack(alignment: .top){
             Color.primaryBg.ignoresSafeArea()
@@ -22,7 +33,7 @@ struct StoriesView: View {
                 VStack(spacing: 16) {
                     ZStack(alignment: .top){
                         
-                        StoryBodyView(model: $stories[currentIndex])
+                        StoryBodyView(model: $stories[indexProgress])
                             
                         headerSectionView
                         pageButtonsControls(proxy)
@@ -40,13 +51,15 @@ struct StoriesView: View {
             }
 
         }
-        
+        .onAppear{
+            counTimer.start()
+        }
     }
 }
 
 struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        StoriesView(close: .constant(false), stories: .constant(Mocks.stories))
+        StoriesView(stories: .constant(Mocks.stories), close: .constant(false))
     }
 }
 
@@ -55,11 +68,14 @@ extension StoriesView{
     
     private var headerSectionView: some View{
         HStack(spacing: 6){
+            
+                
             ForEach(stories.indices, id: \.self) {index in
-                Capsule()
-                    .foregroundColor(.white)
-                    .frame(height: 3)
-                    .opacity(index == currentIndex ? 1 : 0.5)
+                let progress = min(max(CGFloat(counTimer.progress) - CGFloat(index), 0.0), 1.0)
+                Group{
+                    StoryLoadingBar(progress: progress)
+                        .frame(height: 3)
+                }
             }
             Button {
                 closeViewWithAnimation()
@@ -74,7 +90,7 @@ extension StoriesView{
             .padding(.leading, 5)
         }
         .padding([.horizontal, .top])
-        .animation(.default, value: currentIndex)
+       
     }
     
     private var likeButton: some View{
@@ -98,7 +114,7 @@ extension StoriesView{
                 .contentShape(Rectangle())
             
                 .onTapGesture {
-                    currentIndex -= (currentIndex != 0) ? 1 : 0
+                    counTimer.advancePage(by: -1)
                 }
             
             Spacer()
@@ -107,7 +123,7 @@ extension StoriesView{
                 .frame(width: proxy.size.width / 5, height: proxy.size.height / 1.3)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    currentIndex += (currentIndex < (stories.count - 1)) ? 1 : 0
+                    counTimer.advancePage(by: 1)
                 }
         }
     }

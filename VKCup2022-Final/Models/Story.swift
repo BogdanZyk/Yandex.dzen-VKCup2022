@@ -58,6 +58,8 @@ struct Sticker: Identifiable{
     
     var label: String?
     var slideValue: Double = 0.0
+    var isVoted: Bool = false
+    var votedCount: Double = 0.0
     var question: String = ""
     var type: StickerType
     
@@ -67,7 +69,7 @@ struct Sticker: Identifiable{
     
     
     enum StickerType: Int, CaseIterable{
-        case slider, reaction, question
+        case slider, reaction, button
     }
     
 }

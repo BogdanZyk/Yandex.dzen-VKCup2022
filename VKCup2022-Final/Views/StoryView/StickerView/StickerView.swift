@@ -16,8 +16,8 @@ struct StickerView: View {
                 emojiSlider
             case .reaction:
                 reactionButton
-            case .question:
-                questionSticker
+            case .button:
+                approvalButton
             }
         }
         .offset(x: sticker.offsetX, y: sticker.offsetY)
@@ -42,8 +42,8 @@ extension StickerView{
 //MARK: - Question
 
 extension StickerView{
-    private var questionSticker: some View{
-        QuestionStickerView(question: sticker.question)
+    private var approvalButton: some View{
+        ApprovalButtonStickerView(isVoted: $sticker.isVoted, value: sticker.votedCount)
     }
 }
 
