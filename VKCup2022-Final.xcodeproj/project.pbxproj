@@ -173,8 +173,6 @@
 			children = (
 				5A0C8A322987BD77002AF471 /* LoaderView.swift */,
 				5A64448D298858DF00044920 /* NukeLazyImage.swift */,
-				5A6444872988557100044920 /* PostStoryViewComponent */,
-				5A0C8A352987BF0D002AF471 /* AudioComponents */,
 				5A64449E298BCBFD00044920 /* ParticlesModifier.swift */,
 			);
 			path = ViewComponents;
@@ -183,6 +181,7 @@
 		5A0C8A1D29859EEA002AF471 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AD86677298C57A900ECDC6F /* PodcastView */,
 				5A6444912989437E00044920 /* StoryView */,
 				5A6444842988496E00044920 /* Home */,
 				5A0C8A3B2987F975002AF471 /* RootView */,
@@ -252,13 +251,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		5A6444872988557100044920 /* PostStoryViewComponent */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PostStoryViewComponent;
-			sourceTree = "<group>";
-		};
 		5A6444912989437E00044920 /* StoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +283,14 @@
 				5AD86675298C285900ECDC6F /* ApprovalButtonStickerView.swift */,
 			);
 			path = StickerView;
+			sourceTree = "<group>";
+		};
+		5AD86677298C57A900ECDC6F /* PodcastView */ = {
+			isa = PBXGroup;
+			children = (
+				5A0C8A352987BF0D002AF471 /* AudioComponents */,
+			);
+			path = PodcastView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -48,13 +48,14 @@ struct AudioPodcastViewComponent: View {
                 
                 playPauseButton
                 
-                if let soundSamples{
+                if let soundSamples, isSetCurrentAudio{
                     AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: podcast.audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio, isPlayAnimation: isOnAppear)
                         .hCenter()
-                        .onTapGesture {
-                            playerManager.audioAction(podcast)
-                        }
+                        
+                }else{
+                    placeHolder
                 }
+                
                 if isOnAppear{
                     audioDuration
                 }
@@ -62,7 +63,12 @@ struct AudioPodcastViewComponent: View {
             .foregroundColor(.white)
             .padding(.horizontal)
         }
+        .animation(.easeInOut, value: isSetCurrentAudio)
         .frame(height: 50)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            playerManager.audioAction(podcast)
+        }
         .onAppear{
             isOnAppear = true
         }
@@ -130,6 +136,15 @@ extension AudioPodcastViewComponent{
         Text(remainingDuration)
             .font(.caption)
             .frame(width: 35)
+    }
+    
+    private var placeHolder: some View{
+        Group{
+            Text("Слушать подкаст")
+                .font(.system(size: 16, weight: .medium))
+                .padding(.leading, 10)
+            Spacer()
+        }
     }
 }
 
