@@ -17,6 +17,7 @@ class AudioPlayerManger: ObservableObject {
     @Published var currentTime: Double = .zero
     @Published var currentPodcast: Podcast?
     @Published var isPlaying: Bool = false
+    @Published var isLoading: Bool = false
     @Published var session: AVAudioSession!
     @Published var currentRate: Float = 1.0
     @Published var isPinAudio: Bool = false
@@ -116,11 +117,9 @@ class AudioPlayerManger: ObservableObject {
                 self.currentTime = seekTime
             }
             
-            let playbackLikelyToKeepUp = self.player.currentItem?.isPlaybackLikelyToKeepUp
-            if !(playbackLikelyToKeepUp ?? false){
-                print("loading")
-            }else{
-              
+            //check if AVPlayer is buffering
+            if  let playbackLikelyToKeepUp = self.player.currentItem?.isPlaybackLikelyToKeepUp{
+                self.isLoading = self.player.timeControlStatus != .playing && !playbackLikelyToKeepUp
             }
         }
     }

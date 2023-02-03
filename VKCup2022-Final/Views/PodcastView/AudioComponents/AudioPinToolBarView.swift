@@ -44,14 +44,20 @@ struct AudioPinToolBarView_Previews: PreviewProvider {
 
 
 extension AudioPinToolBarView {
+    
+    @ViewBuilder
     private var playButton: some View{
-        Button {
-            if let audio = playerManager.currentPodcast{
-                playerManager.audioAction(audio)
+        if playerManager.isLoading{
+           ProgressView()
+        }else{
+            Button {
+                if let audio = playerManager.currentPodcast{
+                    playerManager.audioAction(audio)
+                }
+            } label: {
+                Image(systemName: playerManager.isPlaying ? "pause.fill" : "play.fill")
+                    .imageScale(.medium)
             }
-        } label: {
-            Image(systemName: playerManager.isPlaying ? "pause.fill" : "play.fill")
-                .imageScale(.medium)
         }
     }
     
@@ -89,6 +95,7 @@ extension AudioPinToolBarView {
                 backwardLabel(isForward: true)
             }
         }
+        .disabled(playerManager.isLoading)
     }
     
     private func backwardLabel(isForward: Bool) -> some View{

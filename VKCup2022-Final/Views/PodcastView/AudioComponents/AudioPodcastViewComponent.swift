@@ -40,17 +40,21 @@ struct AudioPodcastViewComponent: View {
     
     var body: some View {
         ZStack{
-            
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.lightGray, lineWidth: 1.5)
             
             HStack(alignment: .center, spacing: 0) {
                 
-                playPauseButton
+                if playerManager.isLoading{
+                    ProgressView()
+                }else{
+                    playPauseButton
+                }
                 
                 if let soundSamples, isSetCurrentAudio{
                     AudioSimplesSlider(value: $playerManager.currentTime, magnitudes: soundSamples.map({$0.magnitude}), duration: podcast.audio.duration, onEditingChanged: onEditingChanged, isPlay: isSetCurrentAudio, isPlayAnimation: isOnAppear)
                         .hCenter()
+                        .disabled(playerManager.isLoading)
                         
                 }else{
                     placeHolder
@@ -63,7 +67,7 @@ struct AudioPodcastViewComponent: View {
             .foregroundColor(.white)
             .padding(.horizontal)
         }
-        .animation(.easeInOut, value: isSetCurrentAudio)
+        .animation(.easeInOut(duration: 0.2), value: isSetCurrentAudio)
         .frame(height: 50)
         .contentShape(Rectangle())
         .onTapGesture {

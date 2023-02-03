@@ -23,8 +23,8 @@ class Mocks{
     
     static let audios: [Audio] = [
         .init(url: "https://mave-ua.b-cdn.net/podcasts/83cd9f40-5a0c-4935-b5e2-815b1b5fdb9d/episodes/7041463c-5f7a-4e28-894f-0862a708d410.mp3", duration: 732, decibles: decibles),
-        .init(url: "https://muzati.net/music/0-0-1-20580-20", duration: 139, decibles: decibles),
-        .init(url: "https://muzati.net/music/0-0-1-20564-20", duration: 212, decibles: decibles),
+        .init(url: "https://mavecloud.s3mts.ru/storage/podcasts/4fbfe8cb-665b-419a-82f6-686e679e9661/episodes/ed145525-ef2c-4339-a9f0-9d4f30c803ba.mp3", duration: 1011, decibles: decibles),
+        .init(url: "https://mavecloud.s3mts.ru/storage/podcasts/4fbfe8cb-665b-419a-82f6-686e679e9661/episodes/0ee4469f-97fb-46f0-8b30-b29f76c97dfa.mp3", duration: 855, decibles: decibles)
     ]
     
     
