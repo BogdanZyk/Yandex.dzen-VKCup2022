@@ -97,6 +97,7 @@ extension CreatePostView{
                     } label: {
                         Label("Удалить аудио", systemImage: "trash.fill")
                             .font(.system(size: 16))
+                            .foregroundColor(.red)
                     }
                 }
             }
