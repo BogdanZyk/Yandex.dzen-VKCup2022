@@ -69,7 +69,7 @@ extension PostView{
         VStack(alignment: .leading, spacing: 10){
             Text(post.text)
                 .lineSpacing(3.5)
-                .lineLimit(5)
+                .lineLimit(6)
                 .font(.system(size: 16, weight: .medium))
         }
     }

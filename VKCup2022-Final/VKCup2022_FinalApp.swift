@@ -14,6 +14,7 @@ struct VKCup2022_FinalApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .preferredColorScheme(.dark)
         }
     }
 }

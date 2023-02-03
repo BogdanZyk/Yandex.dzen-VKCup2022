@@ -60,7 +60,7 @@ struct StoriesView: View {
 
 struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        StoriesView(stories: .constant(Mocks.stories), close: .constant(false))
+        StoriesView(stories: .constant(Mocks.storiesFood), close: .constant(false))
     }
 }
 

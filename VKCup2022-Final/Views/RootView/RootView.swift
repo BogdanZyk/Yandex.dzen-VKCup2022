@@ -20,7 +20,7 @@ struct RootView: View {
             TabView(selection: $rootVM.currentTab) {
                 HomeView()
                     .tag(TabEnum.home)
-                Text("reels")
+                ListElementsView()
                     .tag(TabEnum.reels)
                 Text("video")
                     .tag(TabEnum.video)

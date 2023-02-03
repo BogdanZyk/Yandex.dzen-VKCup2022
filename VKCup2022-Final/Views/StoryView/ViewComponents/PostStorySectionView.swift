@@ -34,7 +34,7 @@ struct PostStorySectionView: View {
 
 struct PostStorySectionView_Previews: PreviewProvider {
     static var previews: some View {
-        PostStorySectionView(rootVM: RootViewModel(), preview: .init(title: "Простые рецепты для здорового питания", image: "https://res.cloudinary.com/grand-canyon-university/image/fetch/w_750,h_564,c_fill,g_faces,q_auto/https://www.gcu.edu/sites/default/files/2020-09/programming.jpg"), stories: Mocks.stories)
+        PostStorySectionView(rootVM: RootViewModel(), preview: .init(title: "Простые рецепты для здорового питания", image: "https://res.cloudinary.com/grand-canyon-university/image/fetch/w_750,h_564,c_fill,g_faces,q_auto/https://www.gcu.edu/sites/default/files/2020-09/programming.jpg"), stories: Mocks.storiesIT)
             .padding()
     }
 }
