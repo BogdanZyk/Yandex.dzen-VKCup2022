@@ -25,7 +25,6 @@ class AudioRecorderManager : ObservableObject {
     @Published var blinkingCount : Timer?
     @Published var currentRecordTime: Double = 0
     
-    var returnedAudio: Audio?
     
     init(){
         AVAudioSessionManager.share.configureRecordAudioSessionCategory()
@@ -59,35 +58,35 @@ class AudioRecorderManager : ObservableObject {
     }
     
     
-    func stopRecording(){
+    func stopRecording(compeltion: @escaping (Audio) -> Void){
         print("DEBUG:", "stopRecording")
         audioRecorder.stop()
         resetTimer()
-        prepairAudio()
+        prepairAudio(compeltion: compeltion)
     }
     
     func cancel(){
         print("DEBUG:", "cancel")
         audioRecorder.stop()
-        returnedAudio = nil
         recordState = .empty
         resetTimer()
         removeRecordedAudio()
     }
         
-   private func prepairAudio(){
+    private func prepairAudio(compeltion: @escaping (Audio) -> Void){
         print("DEBUG:", "prepairAudio")
         let url = audioRecorder.url
         
         ///количество симплов в расчете на размер экрана для визуализации звука
-        let cimplesCount = Int(UIScreen.main.bounds.width * 0.4) / 4
+        let simplesCount = Int(UIScreen.main.bounds.width * 0.4) / 4
         
-        bufferService.buffer(url: url, samplesCount: cimplesCount) { [weak self] (duration, decibles) in
+        bufferService.buffer(url: url, samplesCount: simplesCount) { [weak self] (duration, decibles) in
             guard let self = self else {return}
             
-            self.returnedAudio = .init(url: url.absoluteString, duration: duration, decibles: decibles)
+            let returnedAudio = Audio(url: url.absoluteString, duration: duration, decibles: decibles)
             self.recordState = .recordered
             self.removeRecordedAudio()
+            compeltion(returnedAudio)
             
         } onError: {[weak self] _ in
             self?.recordState = .error

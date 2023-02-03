@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AudioPinToolBarView: View {
     @ObservedObject var playerManager: AudioPlayerManger
+    
     var body: some View {
-
         VStack(spacing: 0) {
             if let audio = playerManager.currentPodcast?.audio{
-                ProgressView(value: playerManager.currentTime, total: audio.duration)
+                let time = playerManager.currentTime >= audio.duration ? audio.duration : playerManager.currentTime
+                ProgressView(value: time, total: audio.duration)
                     .progressViewStyle(LinerProgressStyle())
                     .frame(height: 4)
             }

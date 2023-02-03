@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Audio: Identifiable{
+struct Audio: Identifiable, Equatable{
     
     var id = UUID()
     var url: String

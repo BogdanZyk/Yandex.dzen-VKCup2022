@@ -15,7 +15,7 @@ struct HomeView: View {
             navView
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 10) {
-                    ForEach(Mocks.posts){post in
+                    ForEach(rootVM.posts){post in
                         PostView(post: post)
                     }
                 }

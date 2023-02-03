@@ -33,6 +33,9 @@ struct RootView: View {
         }
         .environmentObject(audioPlayer)
         .environmentObject(rootVM)
+        .fullScreenCover(isPresented: $rootVM.showPostCreateView) {
+            CreatePostView(rootVM: rootVM)
+        }
     }
 }
 
@@ -68,6 +71,10 @@ extension RootView{
                             }
                             .foregroundColor(rootVM.currentTab == tab ? .white : .lightGray)
                             .onTapGesture {
+                                if tab == .create{
+                                    rootVM.showPostCreateView.toggle()
+                                    return
+                                }
                                 rootVM.currentTab = tab
                             }
                             .hCenter()

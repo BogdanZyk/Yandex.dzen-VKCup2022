@@ -25,7 +25,7 @@ struct AudioSimplesSlider: View {
     
     private func checkIndexInRange(_ index: Int) -> Bool{
         guard isPlay, isPlayAnimation else {return false}
-        return index < (Int(value) / (Int(duration) / magnitudes.count))
+        return index < Int((value / (duration / Double(magnitudes.count))))
     }
     
     var body: some View {
@@ -96,7 +96,7 @@ struct AudioSimplesSlider_Previews: PreviewProvider {
 extension AudioSimplesSlider{
     private func normalizeSoundLevel(level: Float) -> CGFloat {
         let level = max(0.2, CGFloat(level) + 20) / 2
-        
-        return CGFloat(level * 0.5)
+        let value = CGFloat(level * 0.5)
+        return  value <= 1 ? 2 : value
     }
 }

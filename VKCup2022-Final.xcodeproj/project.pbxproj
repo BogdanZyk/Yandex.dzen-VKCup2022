@@ -43,6 +43,7 @@
 		5AD86674298C1FEC00ECDC6F /* StoryLoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD86673298C1FEC00ECDC6F /* StoryLoadingBar.swift */; };
 		5AD86676298C285900ECDC6F /* ApprovalButtonStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD86675298C285900ECDC6F /* ApprovalButtonStickerView.swift */; };
 		5AD8667A298D198600ECDC6F /* ListElementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD86679298D198600ECDC6F /* ListElementsView.swift */; };
+		5AD86680298D776800ECDC6F /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8667F298D776800ECDC6F /* CreatePostView.swift */; };
 		5ADE620629883BA2001FDFA6 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE620529883BA2001FDFA6 /* PostView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		5AD86673298C1FEC00ECDC6F /* StoryLoadingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLoadingBar.swift; sourceTree = "<group>"; };
 		5AD86675298C285900ECDC6F /* ApprovalButtonStickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalButtonStickerView.swift; sourceTree = "<group>"; };
 		5AD86679298D198600ECDC6F /* ListElementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementsView.swift; sourceTree = "<group>"; };
+		5AD8667F298D776800ECDC6F /* CreatePostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		5ADE620529883BA2001FDFA6 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 		5A0C8A1D29859EEA002AF471 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AD86681298D777100ECDC6F /* CreatePostView */,
 				5AD86678298D196900ECDC6F /* ListElementsView */,
 				5AD86677298C57A900ECDC6F /* PodcastView */,
 				5A6444912989437E00044920 /* StoryView */,
@@ -301,6 +304,14 @@
 			path = ListElementsView;
 			sourceTree = "<group>";
 		};
+		5AD86681298D777100ECDC6F /* CreatePostView */ = {
+			isa = PBXGroup;
+			children = (
+				5AD8667F298D776800ECDC6F /* CreatePostView.swift */,
+			);
+			path = CreatePostView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +403,7 @@
 				5A644489298855CC00044920 /* PostStorySectionView.swift in Sources */,
 				5A0C8A2D2985AA36002AF471 /* AudioPlayerManger.swift in Sources */,
 				5A0C8A412988053F002AF471 /* AudioPinToolBarView.swift in Sources */,
+				5AD86680298D776800ECDC6F /* CreatePostView.swift in Sources */,
 				5A0C8A312986B55D002AF471 /* AudioSimplesSlider.swift in Sources */,
 				5AD86676298C285900ECDC6F /* ApprovalButtonStickerView.swift in Sources */,
 				5A0C8A3D2987F987002AF471 /* RootView.swift in Sources */,
@@ -542,7 +554,7 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Нужно разрешение на использование микрофона для записи аудио";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Разрешите использовать микрофон для записи подкаста";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -576,7 +588,7 @@
 				DEVELOPMENT_TEAM = 92PU6D6MCQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Нужно разрешение на использование микрофона для записи аудио";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Разрешите использовать микрофон для записи подкаста";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
