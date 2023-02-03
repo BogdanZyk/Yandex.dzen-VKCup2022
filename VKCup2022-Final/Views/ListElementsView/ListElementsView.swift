@@ -50,9 +50,10 @@ extension ListElementsView{
                 }
             }
             NavigationLink("Подкаст") {
-                
-                AudioPodcastViewComponent(playerManager: player, podcast: .init(audio: Mocks.audios.randomElement()!, channelName: ""))
-                    .padding()
+                if let podcast = Mocks.posts.compactMap({$0.podcastAudio}).first{
+                    AudioPodcastViewComponent(playerManager: player, podcast: podcast)
+                        .padding()
+                }
             }
         }
     }
@@ -72,8 +73,10 @@ extension ListElementsView{
             NavigationLink("Подкасты") {
                 ScrollView{
                     VStack(spacing: 30){
-                        ForEach(Mocks.audios) { audio in
-                            AudioPodcastViewComponent(playerManager: player, podcast: .init(audio: audio, channelName: ""))
+                        if let podcasts = Mocks.posts.compactMap({$0.podcastAudio}){
+                            ForEach(podcasts, id: \.id) { podcast in
+                                AudioPodcastViewComponent(playerManager: player, podcast: podcast)
+                            }
                         }
                     }
                     .padding()

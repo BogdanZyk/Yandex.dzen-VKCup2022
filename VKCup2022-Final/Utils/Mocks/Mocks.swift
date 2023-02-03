@@ -59,6 +59,12 @@ class Mocks{
               podcastAudio: .init(audio: audios[0], channelName: "Aнтон Лавров"),
               channelInfo: .init(name: "Aнтон Лавров", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6rHdhb-HpWoC8JKiBBOSv376q3Z49BvUxdwdpdAwvaLiuTH9sXEECwMyQ00dQxnAYFA&usqp=CAU")
              ),
+        .init(text: "РАБОТА НЕ ВОЛК. Как правильно отдыхать для успеха в развитии?",
+              imageUrl: nil,
+              podcastAudio: .init(audio: audios[1], channelName: "Aнтон Лавров"),
+              channelInfo: .init(name: "Aнтон Лавров", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6rHdhb-HpWoC8JKiBBOSv376q3Z49BvUxdwdpdAwvaLiuTH9sXEECwMyQ00dQxnAYFA&usqp=CAU")
+             ),
+        
         
     ]
     
@@ -86,14 +92,14 @@ class Mocks{
         
         .init(image: storyImages[4], textBoxes: [
             
-            .init(text: "Как бы вы оценили качество своего питания?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF"), .init(text: "только честно))", size: 26, isBold: true, offsetX: 0, offsetY: 200, color: "#FFFFFF")], sticker: .init(label: "🍆", type: .slider, offsetX: 0, offsetY: 250)),
+            .init(text: "Как бы вы оценили качество своего питания?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF"), .init(text: "только честно))", size: 26, isBold: true, offsetX: 0, offsetY: 200, color: "#FFFFFF")], sticker: .init(label: "🍏", type: .slider, offsetX: 0, offsetY: 250)),
         
             .init(image: storyImages[5], textBoxes: [.init(text: "Влияет ли ваш тип питания на качество вашей жизни?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF"), .init(text: "только честно))", size: 26, isBold: true, offsetX: 0, offsetY: 200, color: "#FFFFFF")], sticker: .init(label: "🍔", type: .slider, offsetX: 0, offsetY: 250)),
         
         
-            .init(image: storyImages[6], textBoxes: [.init(text: "Составляете ли вы план вашего рациона?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF"), .init(text: "только честно))", size: 26, isBold: true, offsetX: 0, offsetY: 200, color: "#FFFFFF")], sticker: .init(label: "🥑", type: .slider, offsetX: 0, offsetY: 250)),
+            .init(image: storyImages[6], textBoxes: [.init(text: "Составляете ли вы план вашего рациона?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF"), .init(text: "только честно))", size: 26, isBold: true, offsetX: 0, offsetY: 200, color: "#FFFFFF")], sticker: .init(label: "🍓", type: .slider, offsetX: 0, offsetY: 250)),
         
-            .init(image: storyImages[7], textBoxes: [.init(text: "Как вы считаете, влияет ли сбалансированное здоровое и полноценное питание на качество вашей жизни?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#FFFFFF")], sticker: .init(votedCount: 0.68, type: .button, offsetX: 0, offsetY: 250)),
+            .init(image: storyImages[7], textBoxes: [.init(text: "Как вы считаете, влияет ли сбалансированное здоровое и полноценное питание на качество вашей жизни?", size: 26, isBold: true, offsetX: 0, offsetY: -250, color: "#080808")], sticker: .init(votedCount: 0.68, type: .button, offsetX: 0, offsetY: 250)),
     ]
     
     
@@ -103,15 +109,15 @@ class Mocks{
     
     private static let storyImages: [Story.BackgroundImage] = [
     
-        .init(url: "https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 3, bgColor: "#9D9C28"),
-        .init(url: "https://images.unsplash.com/photo-1544652478-6653e09f18a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 7, bgColor: "#941C28"),
-        .init(url: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80", offsetX: 0, offsetY: 0, scale: 4, bgColor: "#9D9C28"),
-        .init(url: "https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", offsetX: 4,  offsetY: 0, scale: 3, bgColor: "#9D9C28"),
+        .init(url: "https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 3, bgColor: "#232323"),
+        .init(url: "https://images.unsplash.com/photo-1544652478-6653e09f18a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80", offsetX: 0, offsetY: 0, scale: 7, bgColor: "#232323"),
+        .init(url: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80", offsetX: 0, offsetY: 0, scale: 4, bgColor: "#232323"),
+        .init(url: "https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", offsetX: 4,  offsetY: 0, scale: 3, bgColor: "#232323"),
         
         .init(url: "https://img.freepik.com/free-photo/top-view-eggplant-onion-plate-with-cutlery_23-2148853400.jpg?t=st=1675366797~exp=1675367397~hmac=5dceb8cd059715e5a14c8e19e8c8864c4db5af9d3e3d5c225391c212594aa947", offsetX: 0, offsetY: 0, scale: 1, bgColor: "#5D4493"),
         .init(url: "https://img.freepik.com/free-photo/flat-lat-bell-peppers-with-basket-vegetables_23-2148853382.jpg?t=st=1675366896~exp=1675367496~hmac=4f17bd3087f481ff8e6d2e853f2577ca723bf4b75407283810490ebaf06e4136", offsetX: 0,  offsetY: 0, scale: 1, bgColor: "#663C24"),
         .init(url: "https://img.freepik.com/free-photo/very-fresh-herb-quinoa-bowl_53876-126673.jpg?w=1480&t=st=1675369960~exp=1675370560~hmac=67c13f77f025f2c95956d3cfc5af48498046b1f753d592c859750e2e30822fc0", offsetX: 0,  offsetY: 0, scale: 1, bgColor: "#63926E"),
-        .init(url: "https://img.freepik.com/free-photo/flat-lay-mix-vegetables-cutting-board-bowl-with-chicken-drumstick-spoon_23-2148369704.jpg?w=1800&t=st=1675366812~exp=1675367412~hmac=e42463d6920e613494ea45a83b9ae84e3ddf9cb16831a45cd96a9d187e2624ee", offsetX: 0,  offsetY: 0, scale: 4, bgColor: "#63926E")
+        .init(url: "https://img.freepik.com/free-photo/flat-lay-mix-vegetables-cutting-board-bowl-with-chicken-drumstick-spoon_23-2148369704.jpg?w=1800&t=st=1675366812~exp=1675367412~hmac=e42463d6920e613494ea45a83b9ae84e3ddf9cb16831a45cd96a9d187e2624ee", offsetX: 0,  offsetY: 0, scale: 3, bgColor: "#63926E")
     
     ]
     
